@@ -1,16 +1,13 @@
 # terminal
 
-A new Flutter project.
+Terminal of cash manager project.
+
+## Requirements
+
+Follow installation steps of [flutter](https://docs.flutter.dev/get-started/install).
+
+[Set up editor](https://docs.flutter.dev/get-started/test-drive) and [run](https://docs.flutter.dev/get-started/test-drive?tab=terminal) the project
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Open `terminal/lib/main.dart` file and click the play button.
