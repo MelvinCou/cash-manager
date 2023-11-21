@@ -52,7 +52,7 @@
 
 ### **How to submit a pull request?**
 
-- Format your code using Mix Format & Prettier
+- Format your code
 
 - Make sure your code has a proper set of unit tests that all pass
 
