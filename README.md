@@ -10,7 +10,9 @@ This part of the project is organized as modules, that can be launch independent
 - if the module contains a compose.yaml file, you will need to create at its root a .env.local file that follow this template :
 
 POSTGRES_DB=*******
+
 POSTGRES_PASSWORD=******
+
 POSTGRES_USER=*******
 
 (don't forget to launch your docker engine if it's not already running)
