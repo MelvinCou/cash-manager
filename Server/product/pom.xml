@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.cashmanager.server</groupId>
-        <artifactId>Server</artifactId>
+        <artifactId>server</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
