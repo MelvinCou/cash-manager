@@ -10,7 +10,7 @@
 	</parent>
 
 	<groupId>com.cashmanager.server</groupId>
-	<artifactId>Server</artifactId>
+	<artifactId>server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Server</name>
 	<description>CashManager server project for Spring Boot</description>
