@@ -3,6 +3,6 @@ version: "3.8"
 services:
   terminal:
     container_name: terminal
-    build: .
+    build: ./terminal
     volumes:
       - ./terminal/build/app/outputs/flutter-apk:/terminal/build/app/outputs/flutter-apk

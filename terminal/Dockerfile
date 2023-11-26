@@ -12,7 +12,7 @@ WORKDIR /terminal
 
 RUN flutter upgrade
 
-COPY ./terminal .
+COPY . .
 
 #The entrypoint command require root access
 USER root
