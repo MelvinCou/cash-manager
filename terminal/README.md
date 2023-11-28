@@ -2,6 +2,10 @@
 
 Terminal of cash manager project.
 
+## Wireframes
+
+[Pages de l'application](https://www.figma.com/file/qCPhOBykgLhAbbLjAXzRj1/T-DEV-700-Cash-Manager?type=design&node-id=35%3A0&mode=design&t=5Ltb4mmC2RZlxf5R-1)
+
 ## Getting Started
 
 Follow installation steps of [flutter](https://docs.flutter.dev/get-started/install).
