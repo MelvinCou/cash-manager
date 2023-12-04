@@ -7,7 +7,7 @@ This part of the project is organized as modules, that can be launch independent
 
 ### Launch one module
 
-- Go the folder CashManagerServer with the command cd CashManagerServer
+- Go the folder Server with the command cd Server
 - command mvn clean install => to load the dependencies and create the jar files that represents each module
 - if the module contains a compose.yaml file, you will need to create at its root a .env.local file that follow this template :
 
@@ -23,7 +23,7 @@ POSTGRES_USER=*******
 
 Be careful ! If you're not using the last command, but the running tool of your IDE, uncomment the second line in the application.properties of the corresponding module.
 
-### Use of API-GATEWAY and EUREKA-SERVER
-To manage the microservices of the application, you need to first launch the module eureka-server (see the command above).
+### Use of API_GATEWAY and EUREKA_SERVER
+To manage the microservices of the application, you need to first launch the module eureka_server (see the command above).
 Then launch the module api_gateway.
-You can have access to the Dashboard of the eureka_server at http://localhost:8761. You will see all the services
+You can have access to the Dashboard of the eureka_server at http://localhost:8761. You will see all the microservices.
