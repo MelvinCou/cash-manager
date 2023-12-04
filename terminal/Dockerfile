@@ -26,4 +26,4 @@ RUN flutter build apk
 FROM busybox
 
 # the apk is in /var/lib/docker/volumes/cash-manager_apk/_data of docker storage
-COPY --from=build /terminal/build/app/outputs/flutter-apk/app-release.apk /apk/app-release.apk
+COPY --from=build /terminal/build/app/outputs/flutter-apk/app-release.apk /apk/client.apk
