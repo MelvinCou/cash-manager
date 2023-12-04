@@ -1,58 +1,48 @@
 package com.cashmanager.server.account.repositories;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
-/**
- * Available roles for a user
- */
-enum Role {
-    CLIENT,
-    ADMIN
-}
-
-@Entity
+@Getter
+@Setter
+@ToString
+@Entity(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.UUID)
     private UUID id;
+
+    @Column(name = "username", nullable = false)
     private String username;
+
+    @Column(name = "password", nullable = false)
     private String password;
-    private Role role;
+
+    @Enumerated
+    @Column(name = "role", nullable = false)
+    private UserRole role;
+
+    @OneToMany(mappedBy = "user", orphanRemoval = true)
+    @ToString.Exclude
+    private Set<Account> accounts = new LinkedHashSet<>();
 
     protected User() {}
 
-    public User(String username, String password, Role role) {
+    public User(String username, String password, UserRole role) {
         this.id = UUID.randomUUID();
         this.username = username;
-        this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
+        setPassword(password);
         this.role = role;
     }
 
-    @Override
-    public String toString() {
-        return String.format(
-                "User[id=%s, username='%s', password='%s', role='%s']",
-                id, username, password, role);
-    }
-
-    public UUID getId() {
-        return id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public Role getRole() {
-        return role;
+    public void setPassword(String password) {
+        this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
     }
 }
