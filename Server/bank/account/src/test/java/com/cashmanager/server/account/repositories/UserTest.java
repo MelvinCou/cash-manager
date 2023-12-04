@@ -10,11 +10,12 @@ class UserTest {
     void createUser() {
         String username = "username";
         String password = "password";
-        Role role = Role.CLIENT;
+        UserRole role = UserRole.CLIENT;
         User user = new User(username, password, role);
 
-        assertEquals(user.getUsername(), username);
+        assertFalse(user.getId().toString().isEmpty());
+        assertEquals(username, user.getUsername());
         assertTrue(BCrypt.checkpw(password, user.getPassword()));
-        assertEquals(user.getRole(), role);
+        assertEquals(role, user.getRole());
     }
 }
