@@ -22,5 +22,6 @@
 	<modules>
 		<module>product</module>
 		<module>coordinator</module>
+		<module>bank</module>
 	</modules>
 </project>
