@@ -1,0 +1,11 @@
+version: "3.8"
+
+services:
+  terminal:
+    container_name: terminal
+    build: ./terminal
+    volumes:
+      #Apk is located at /apk/client.apk
+      - apk:/apk/
+volumes:
+  apk:
