@@ -5,4 +5,7 @@ services:
     container_name: terminal
     build: ./terminal
     volumes:
-      - ./terminal/build/app/outputs/flutter-apk:/terminal/build/app/outputs/flutter-apk
+      #Apk is located at /apk/client.apk
+      - apk:/apk
+volumes:
+  apk:
