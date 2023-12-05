@@ -20,7 +20,7 @@ import java.util.UUID;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "order_id" ,nullable = false)
+    @Column(name = "id" ,nullable = false)
     // GenerationType instructs that a UUID for the entity should be generated automatically for us by the persistence provider.
     private UUID orderId;
     @Column( nullable = false)
