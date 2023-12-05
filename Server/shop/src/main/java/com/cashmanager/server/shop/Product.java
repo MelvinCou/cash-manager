@@ -20,16 +20,20 @@ import java.util.UUID;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column( name = "product_id",nullable = false)
+    private UUID productId;
     @Column( nullable = false)
-    private UUID product_id;
     private String name;
+    @Column( nullable = false)
     private Integer price;
+    @Column( nullable = false)
     private String productUrl;
+    @Column( nullable = false)
     private Integer stock;
 
     @OneToMany(mappedBy="products")
     @ToString.Exclude
-    private Set<Ordered_orders> ordered_orders;
+    private Set<OrderedOrder> ordered_orders;
 
     @Override
     public final boolean equals(Object o) {
@@ -39,7 +43,7 @@ public class Product {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         Product product = (Product) o;
-        return getProduct_id() != null && Objects.equals(getProduct_id(), product.getProduct_id());
+        return getProductId() != null && Objects.equals(getProductId(), product.getProductId());
     }
 
     @Override
