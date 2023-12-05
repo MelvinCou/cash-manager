@@ -8,6 +8,11 @@
           <package value="com.cashmanager.server.account" />
         </packages>
       </persistence-unit>
+      <persistence-unit moduleName="transaction" name="Default">
+        <packages>
+          <package value="com.cashmanager.server.transaction" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>
