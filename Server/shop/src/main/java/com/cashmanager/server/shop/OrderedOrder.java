@@ -6,6 +6,7 @@ import org.hibernate.proxy.HibernateProxy;
 
 import java.util.Objects;
 import java.util.UUID;
+
 @Getter
 @Setter
 @ToString
@@ -13,11 +14,13 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @Entity
-public class Ordered_orders {
+@Table(name = "ordered_orders")
+public class OrderedOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column( nullable = false)
-    private UUID ordered_orders_id;
+    private UUID orderedOrdersId;
+    @Column( nullable = false)
     private Integer quantity;
 
     @ManyToOne
@@ -34,8 +37,8 @@ public class Ordered_orders {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Ordered_orders that = (Ordered_orders) o;
-        return getOrdered_orders_id() != null && Objects.equals(getOrdered_orders_id(), that.getOrdered_orders_id());
+        OrderedOrder that = (OrderedOrder) o;
+        return getOrderedOrdersId() != null && Objects.equals(getOrderedOrdersId(), that.getOrderedOrdersId());
     }
 
     @Override

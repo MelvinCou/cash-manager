@@ -20,15 +20,17 @@ import java.util.UUID;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column( nullable = false)
+    @Column(name = "order_id" ,nullable = false)
     // GenerationType instructs that a UUID for the entity should be generated automatically for us by the persistence provider.
-    private UUID order_id;
+    private UUID orderId;
+    @Column( nullable = false)
     private String status;
+    @Column( nullable = false)
     private Date date;
 
     @OneToMany(mappedBy = "orders")
     @ToString.Exclude
-    private Set<Ordered_orders> ordered_orders;
+    private Set<OrderedOrder> ordered_orders;
 
     @Override
     public final boolean equals(Object o) {
@@ -38,7 +40,7 @@ public class Order {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         Order order = (Order) o;
-        return getOrder_id() != null && Objects.equals(getOrder_id(), order.getOrder_id());
+        return getOrderId() != null && Objects.equals(getOrderId(), order.getOrderId());
     }
 
     @Override
