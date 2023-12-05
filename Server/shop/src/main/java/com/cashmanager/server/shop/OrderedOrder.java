@@ -18,7 +18,7 @@ import java.util.UUID;
 public class OrderedOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column( nullable = false)
+    @Column( name = "id",nullable = false)
     private UUID orderedOrdersId;
     @Column( nullable = false)
     private Integer quantity;
