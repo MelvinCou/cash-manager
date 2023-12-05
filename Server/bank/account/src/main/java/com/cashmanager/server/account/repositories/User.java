@@ -16,7 +16,6 @@ import java.util.UUID;
 @Entity(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.UUID)
     private UUID id;
 
     @Column(name = "username", nullable = false)
@@ -27,7 +26,7 @@ public class User {
 
     @Enumerated
     @Column(name = "role", nullable = false)
-    private UserRole role;
+    private EnumUserRole role;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     @ToString.Exclude
@@ -35,7 +34,7 @@ public class User {
 
     protected User() {}
 
-    public User(String username, String password, UserRole role) {
+    public User(String username, String password, EnumUserRole role) {
         this.id = UUID.randomUUID();
         this.username = username;
         setPassword(password);
