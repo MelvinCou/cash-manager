@@ -7,6 +7,8 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -15,7 +17,6 @@ import java.util.UUID;
 @Entity(name = "accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy= GenerationType.UUID)
     private UUID id;
 
     @ToString.Exclude
@@ -28,8 +29,12 @@ public class Account {
 
     @Enumerated
     @Column(name = "state", nullable = false)
-    private AccountState state;
+    private EnumAccountState state;
 
     @Column(name = "balance", nullable = false, precision = 19, scale = 2)
     private BigDecimal balance;
+
+    @OneToMany(mappedBy = "account", orphanRemoval = true)
+    private Set<PaymentMethod> paymentMethods = new LinkedHashSet<>();
+
 }

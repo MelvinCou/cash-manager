@@ -10,7 +10,7 @@ class UserTest {
     void createUser() {
         String username = "username";
         String password = "password";
-        UserRole role = UserRole.CLIENT;
+        EnumUserRole role = EnumUserRole.CLIENT;
         User user = new User(username, password, role);
 
         assertFalse(user.getId().toString().isEmpty());

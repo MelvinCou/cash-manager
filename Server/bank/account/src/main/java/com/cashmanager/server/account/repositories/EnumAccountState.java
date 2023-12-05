@@ -1,6 +1,6 @@
 package com.cashmanager.server.account.repositories;
 
-public enum AccountState {
+public enum EnumAccountState {
     ACTIVE,
     INACTIVE
 }

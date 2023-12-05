@@ -14,8 +14,6 @@ import java.util.UUID;
 @Entity(name = "accounts_logs")
 public class AccountsLogs {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(nullable = false)
     private UUID id;
 
     @ToString.Exclude
