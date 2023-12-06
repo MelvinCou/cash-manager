@@ -28,9 +28,9 @@ public class Order {
     @Column( nullable = false)
     private Date date;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "order")
     @ToString.Exclude
-    private Set<OrderedOrder> ordered_orders;
+    private Set<OrderedOrder> orderedOrder;
 
     @Override
     public final boolean equals(Object o) {
