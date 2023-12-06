@@ -1,5 +1,7 @@
-package com.cashmanager.server.account.repositories;
+package com.cashmanager.server.database.repositories.account;
 
+import com.cashmanager.server.database.repositories.PaymentMethod;
+import com.cashmanager.server.database.repositories.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

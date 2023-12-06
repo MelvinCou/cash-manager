@@ -1,5 +1,6 @@
-package com.cashmanager.server.account.repositories;
+package com.cashmanager.server.database.repositories.user;
 
+import com.cashmanager.server.database.repositories.account.Account;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -43,5 +44,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt(12));
+    }
+
+    public boolean checkPassword(String password) {
+        return BCrypt.checkpw(password, this.password);
     }
 }
