@@ -18,7 +18,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "cd Server && mvn validate",
+	"postCreateCommand": "cd Server && mvn compile",
 
 	// Configure tool-specific properties.
 	// "customizations": {},
