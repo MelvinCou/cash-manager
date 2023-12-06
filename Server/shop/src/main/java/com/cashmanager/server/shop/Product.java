@@ -31,9 +31,9 @@ public class Product {
     @Column( nullable = false)
     private Integer stock;
 
-    @OneToMany(mappedBy="products")
+    @OneToMany(mappedBy="product")
     @ToString.Exclude
-    private Set<OrderedOrder> ordered_orders;
+    private Set<OrderedOrder> orderedOrder;
 
     @Override
     public final boolean equals(Object o) {
