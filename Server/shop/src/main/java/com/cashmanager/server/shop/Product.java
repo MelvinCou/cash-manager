@@ -33,7 +33,7 @@ public class Product {
 
     @OneToMany(mappedBy="product")
     @ToString.Exclude
-    private Set<OrderedOrder> orderedOrder;
+    private Set<OrderedOrder> orderedOrders;
 
     @Override
     public final boolean equals(Object o) {
