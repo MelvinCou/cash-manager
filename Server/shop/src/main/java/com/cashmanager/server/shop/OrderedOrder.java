@@ -19,7 +19,7 @@ public class OrderedOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column( name = "id",nullable = false)
-    private UUID orderedOrderId;
+    private UUID id;
     @Column( nullable = false)
     private Integer quantity;
 
@@ -38,7 +38,7 @@ public class OrderedOrder {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         OrderedOrder that = (OrderedOrder) o;
-        return getOrderedOrderId() != null && Objects.equals(getOrderedOrderId(), that.getOrderedOrderId());
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override

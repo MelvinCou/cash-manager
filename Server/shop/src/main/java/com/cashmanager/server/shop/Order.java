@@ -22,7 +22,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id" ,nullable = false)
     // GenerationType instructs that a UUID for the entity should be generated automatically for us by the persistence provider.
-    private UUID orderId;
+    private UUID id;
     @Column( nullable = false)
     private String status;
     @Column( nullable = false)
@@ -40,7 +40,7 @@ public class Order {
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         Order order = (Order) o;
-        return getOrderId() != null && Objects.equals(getOrderId(), order.getOrderId());
+        return getId() != null && Objects.equals(getId(), order.getId());
     }
 
     @Override
