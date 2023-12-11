@@ -2,6 +2,7 @@ package com.cashmanager.server.database.entities;
 
 import com.cashmanager.server.database.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -19,10 +20,11 @@ public class User {
     @Id
     private UUID id;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "password", nullable = false)
+    @Setter(AccessLevel.NONE)
     private String password;
 
     @Enumerated

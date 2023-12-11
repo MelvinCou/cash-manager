@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id       UUID         NOT NULL,
+    id       UUID         NOT NULL UNIQUE,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     role     SMALLINT     NOT NULL,
