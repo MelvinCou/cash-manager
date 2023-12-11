@@ -3,7 +3,7 @@ package com.cashmanager.server.database.enums;
 /**
  * Available roles for a user
  */
-public enum EnumUserRole {
+public enum UserRole {
     CLIENT,
     ADMIN
 }

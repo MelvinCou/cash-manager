@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.entities;
 
-import com.cashmanager.server.database.enums.EnumAccountState;
+import com.cashmanager.server.database.enums.AccountState;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,7 +30,7 @@ public class Account {
 
     @Enumerated
     @Column(name = "state", nullable = false)
-    private EnumAccountState state;
+    private AccountState state;
 
     @Column(name = "balance", nullable = false, precision = 19, scale = 2)
     private BigDecimal balance;

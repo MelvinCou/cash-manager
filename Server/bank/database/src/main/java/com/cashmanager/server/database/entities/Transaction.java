@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.entities;
 
-import com.cashmanager.server.database.enums.EnumTransactionStatus;
+import com.cashmanager.server.database.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class Transaction {
 
     @Enumerated
     @Column(name = "status", nullable = false)
-    private EnumTransactionStatus status;
+    private TransactionStatus status;
 
     @Column(name = "amount", nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
