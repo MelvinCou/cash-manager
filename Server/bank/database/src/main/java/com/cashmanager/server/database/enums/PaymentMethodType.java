@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.enums;
 
-public enum EnumPaymentMethodType {
+public enum PaymentMethodType {
     CARD,
     CHECK
 }

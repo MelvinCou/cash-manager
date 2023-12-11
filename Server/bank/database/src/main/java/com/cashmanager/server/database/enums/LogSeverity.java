@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.enums;
 
-public enum EnumLogSeverity {
+public enum LogSeverity {
     INFO,
     WARN,
     ERROR
