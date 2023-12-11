@@ -1,4 +1,4 @@
-package com.cashmanager.server.database.repositories.user;
+package com.cashmanager.server.database.enums;
 
 /**
  * Available roles for a user

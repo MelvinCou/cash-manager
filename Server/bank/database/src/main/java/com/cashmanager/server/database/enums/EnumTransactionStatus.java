@@ -1,4 +1,4 @@
-package com.cashmanager.server.database.repositories.transaction;
+package com.cashmanager.server.database.enums;
 
 public enum EnumTransactionStatus {
     SUCCES,
