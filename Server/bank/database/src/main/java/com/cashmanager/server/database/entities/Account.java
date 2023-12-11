@@ -2,9 +2,7 @@ package com.cashmanager.server.database.entities;
 
 import com.cashmanager.server.database.enums.AccountState;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,14 +13,16 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "accounts")
 public class Account {
     @Id
     private UUID id;
 
-    @ToString.Exclude
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
+    @ToString.Exclude
     private User user;
 
     @Column(name = "opening_date", nullable = false)
@@ -36,6 +36,14 @@ public class Account {
     private BigDecimal balance;
 
     @OneToMany(mappedBy = "account", orphanRemoval = true)
+    @ToString.Exclude
     private Set<PaymentMethod> paymentMethods = new LinkedHashSet<>();
 
+    public Account(User user) {
+        this.id = UUID.randomUUID();
+        this.user = user;
+        this.openingDate = LocalDateTime.now();
+        this.state = AccountState.ACTIVE;
+        this.balance = BigDecimal.ZERO;
+    }
 }

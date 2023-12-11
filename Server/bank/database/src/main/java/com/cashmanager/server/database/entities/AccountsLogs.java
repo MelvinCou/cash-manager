@@ -16,9 +16,9 @@ public class AccountsLogs {
     @Id
     private UUID id;
 
-    @ToString.Exclude
     @ManyToOne(optional = false)
     @JoinColumn(name = "account_id", nullable = false)
+    @ToString.Exclude
     private Account account;
 
     @Column(name = "message", nullable = false)
