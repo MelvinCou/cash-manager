@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:terminal/config/app_router.dart';
 import 'package:terminal/injection_container.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:terminal/features/transaction/domain/usecase/get_check_data.dart';
 
 void main() async {
   await initializeDependencies();
