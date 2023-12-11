@@ -1,9 +1,9 @@
 package com.cashmanager.server.database.repositories;
 
 import com.cashmanager.server.database.entities.Account;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface AccountRepository extends CrudRepository<Account, UUID> {
+public interface AccountRepository extends JpaRepository<Account, UUID> {
 }
