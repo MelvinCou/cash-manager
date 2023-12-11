@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.enums;
 
-public enum EnumAccountState {
+public enum AccountState {
     ACTIVE,
     INACTIVE
 }

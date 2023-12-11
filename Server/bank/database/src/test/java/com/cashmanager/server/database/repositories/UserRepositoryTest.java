@@ -1,16 +1,16 @@
-package com.cashmanager.server.database.repositories.user;
+package com.cashmanager.server.database.repositories;
 
 import com.cashmanager.server.database.DatabaseApplication;
 import com.cashmanager.server.database.entities.User;
-import com.cashmanager.server.database.enums.EnumUserRole;
-import com.cashmanager.server.database.repositories.UserRepository;
+import com.cashmanager.server.database.enums.UserRole;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = DatabaseApplication.class)
@@ -22,7 +22,7 @@ class UserRepositoryTest {
     public void insertUser() {
         String username = "username";
         String password = "password";
-        EnumUserRole role = EnumUserRole.CLIENT;
+        UserRole role = UserRole.CLIENT;
         User user = userRepository.save(
                 new User(username, password, role));
         User userFromDb = userRepository.findById(user.getId()).get();

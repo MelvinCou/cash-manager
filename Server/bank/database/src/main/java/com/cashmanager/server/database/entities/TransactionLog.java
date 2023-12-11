@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.entities;
 
-import com.cashmanager.server.database.enums.EnumLogSeverity;
+import com.cashmanager.server.database.enums.LogSeverity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class TransactionLog {
 
     @Enumerated
     @Column(name = "severity", nullable = false)
-    private EnumLogSeverity severity;
+    private LogSeverity severity;
 
     @Column(name = "message", nullable = false)
     private String message;

@@ -1,6 +1,6 @@
 package com.cashmanager.server.database.entities;
 
-import com.cashmanager.server.database.enums.EnumUserRole;
+import com.cashmanager.server.database.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,7 +27,7 @@ public class User {
 
     @Enumerated
     @Column(name = "role", nullable = false)
-    private EnumUserRole role;
+    private UserRole role;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     @ToString.Exclude
@@ -35,7 +35,7 @@ public class User {
 
     protected User() {}
 
-    public User(String username, String password, EnumUserRole role) {
+    public User(String username, String password, UserRole role) {
         this.id = UUID.randomUUID();
         this.username = username;
         setPassword(password);

@@ -1,7 +1,6 @@
 package com.cashmanager.server.database.entities;
 
-import com.cashmanager.server.database.entities.Account;
-import com.cashmanager.server.database.enums.EnumPaymentMethodType;
+import com.cashmanager.server.database.enums.PaymentMethodType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +24,7 @@ public class PaymentMethod {
 
     @Enumerated
     @Column(name = "type", nullable = false)
-    private EnumPaymentMethodType type;
+    private PaymentMethodType type;
 
     @Column(name = "credit_card_number", unique = true, length = 19)
     private String creditCardNumber;
