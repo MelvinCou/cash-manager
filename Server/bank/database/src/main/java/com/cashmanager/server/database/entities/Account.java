@@ -1,7 +1,6 @@
-package com.cashmanager.server.database.repositories.account;
+package com.cashmanager.server.database.entities;
 
-import com.cashmanager.server.database.repositories.PaymentMethod;
-import com.cashmanager.server.database.repositories.user.User;
+import com.cashmanager.server.database.enums.EnumAccountState;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

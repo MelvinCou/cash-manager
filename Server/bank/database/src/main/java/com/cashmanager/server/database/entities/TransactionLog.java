@@ -1,5 +1,6 @@
-package com.cashmanager.server.database.repositories.transaction;
+package com.cashmanager.server.database.entities;
 
+import com.cashmanager.server.database.enums.EnumLogSeverity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
