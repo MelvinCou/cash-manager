@@ -18,9 +18,9 @@ public class Transaction {
     @Id
     private UUID id;
 
-    @ToString.Exclude
     @ManyToOne(optional = false)
     @JoinColumn(name = "payment_method_id", nullable = false)
+    @ToString.Exclude
     private PaymentMethod paymentMethod;
 
     @Enumerated
@@ -35,4 +35,13 @@ public class Transaction {
 
     @Column(name = "receiver", nullable = false)
     private String receiver;
+
+    public Transaction(PaymentMethod method, TransactionStatus status, BigDecimal amount, String receiver) {
+        this.id = UUID.randomUUID();
+        this.paymentMethod = method;
+        this.status = status;
+        this.amount = amount;
+        this.date = LocalDateTime.now();
+        this.receiver = receiver;
+    }
 }

@@ -2,9 +2,7 @@ package com.cashmanager.server.database.entities;
 
 import com.cashmanager.server.database.enums.PaymentMethodType;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -12,6 +10,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "payment_methods")
 public class PaymentMethod {
     @Id
@@ -37,4 +37,26 @@ public class PaymentMethod {
 
     @Column(name = "check_number")
     private Integer checkNumber;
+
+    public static PaymentMethod createCreditCard(Account account, String creditCardNumber, String cvc, LocalDateTime validityDate) {
+        return new PaymentMethod(
+                UUID.randomUUID(),
+                account,
+                PaymentMethodType.CARD,
+                creditCardNumber,
+                cvc,
+                validityDate,
+                null);
+    }
+
+    public static PaymentMethod createCheck(Account account, Integer checkNumber) {
+        return new PaymentMethod(
+                UUID.randomUUID(),
+                account,
+                PaymentMethodType.CHECK,
+                null,
+                null,
+                null,
+                checkNumber);
+    }
 }
