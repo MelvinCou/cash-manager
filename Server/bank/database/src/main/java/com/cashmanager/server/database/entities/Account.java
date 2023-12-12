@@ -18,6 +18,7 @@ import java.util.UUID;
 @Entity(name = "accounts")
 public class Account {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne(optional = false)
@@ -40,7 +41,6 @@ public class Account {
     private Set<PaymentMethod> paymentMethods = new LinkedHashSet<>();
 
     public Account(User user) {
-        this.id = UUID.randomUUID();
         this.user = user;
         this.openingDate = LocalDateTime.now();
         this.state = AccountState.ACTIVE;

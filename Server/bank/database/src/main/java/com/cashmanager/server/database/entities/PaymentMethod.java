@@ -15,6 +15,7 @@ import java.util.UUID;
 @Entity(name = "payment_methods")
 public class PaymentMethod {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ToString.Exclude
@@ -40,7 +41,7 @@ public class PaymentMethod {
 
     public static PaymentMethod createCreditCard(Account account, String creditCardNumber, String cvc, LocalDateTime validityDate) {
         return new PaymentMethod(
-                UUID.randomUUID(),
+                null,
                 account,
                 PaymentMethodType.CARD,
                 creditCardNumber,
@@ -51,7 +52,7 @@ public class PaymentMethod {
 
     public static PaymentMethod createCheck(Account account, Integer checkNumber) {
         return new PaymentMethod(
-                UUID.randomUUID(),
+                null,
                 account,
                 PaymentMethodType.CHECK,
                 null,
