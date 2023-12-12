@@ -21,8 +21,8 @@
 
 	<modules>
 		<module>common</module>
-		<module>product</module>
 		<module>coordinator</module>
+		<module>shop</module>
 		<module>bank</module>
 	</modules>
 </project>
