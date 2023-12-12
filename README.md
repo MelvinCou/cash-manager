@@ -3,25 +3,37 @@
 Original repository: https://github.com/MelvinCou/cash-manager
 
 ## Initialization of the back project (CashManagerServer)
+
 This part of the project is organized as modules, that can be launch independently
 
 ### Launch one module
 
-- Go the folder Server with the command cd Server
-- command mvn clean install => to load the dependencies and create the jar files that represents each module
-- if the module contains a compose.yaml file, you will need to create at its root a .env.local file that follow this template :
+1. Go the `Server` folder
 
-POSTGRES_DB=*******
+```sh
+cd Server
+```
 
-POSTGRES_PASSWORD=******
+2. Load the dependencies and create the jar files that represents each module
 
-POSTGRES_USER=*******
+```sh
+mvn clean install
+```
 
-(don't forget to launch your docker engine if it's not already running)
+3. if the module contains a compose.yaml file, copy the `.env.local.exemple` file to `.env.local` in the `Server` folder and fill it with the correct data. Also edit the file `src/resources/application.properties` of the module.
 
-- command mvn --projects com.cashmanager.server:[module] spring-boot:run => to run a particular module
+```sh
+cp .env.local.exemple .env.local
+```
 
-Be careful ! If you're not using the last command, but the running tool of your IDE, uncomment the second line in the application.properties of the corresponding module.
+> [!Note]
+> Don't forget to launch your docker engine if it's not already running
+
+4. Run a particular module
+
+```sh
+mvn --projects :[module] spring-boot:run 
+```
 
 ### Use of API_GATEWAY and EUREKA_SERVER
 To manage the microservices of the application, you need to first launch the module eureka_server (see the command above).
