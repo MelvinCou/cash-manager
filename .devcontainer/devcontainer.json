@@ -12,13 +12,13 @@
 			"installGradle": "false"
 		},
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
-	}
+	},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cd Server && mvn compile",
+	"postCreateCommand": "cd Server && mvn compile"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
