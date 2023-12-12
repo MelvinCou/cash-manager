@@ -52,6 +52,7 @@ android {
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        minSdkVersion 21  // The plugin camera_android requires a higher Android SDK version. 
     }
 
     buildTypes {

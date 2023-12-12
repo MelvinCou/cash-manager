@@ -1,11 +1,13 @@
+import 'dart:convert';
+
 import 'package:equatable/equatable.dart';
 import 'package:terminal/common/usecase.dart';
 import 'package:terminal/features/transaction/domain/entity/check.dart';
+import 'package:flutter_zxing/flutter_zxing.dart';
 
-class GetCheckData implements Equatable, UseCase<Check, void> {
+class GetCheckData implements Equatable, UseCase<Check, Code> {
   @override
-  Future<Check> call({void params}) {
-    // TODO: implement call
+  Future<Check> call({Code? params}) {
     throw UnimplementedError();
   }
 
