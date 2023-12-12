@@ -1,7 +1,7 @@
 package com.cashmanager.server.database.enums;
 
 public enum TransactionStatus {
-    SUCCES,
+    SUCCESS,
     PENDING,
     ABORTED,
     ERROR
