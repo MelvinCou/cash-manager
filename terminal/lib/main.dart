@@ -45,19 +45,8 @@ class _MyHomePageState extends State<MyHomePage> {
       body: ReaderWidget(
         onScan: (result) async {
           //* valild json : {"checkNumer":468516,"amount":85}
-          //     GetCheckData getCheckData = GetCheckData();
-          // getCheckData(params: result);
-          print(result.text);
-          print("__________________________________________________");
-          // result.text!.replaceAll(r"\'", "'");
-          final data = jsonDecode(result.text!);
-          print('${data.runtimeType} : $data');
-          print("__________________________________________________");
-          print(data["amount"]);
-          print(data["amount"].runtimeType);
-          print("__________________________________________________");
-          print("$data ; ${data["amount"]} ; ${data["checkNumer"]}");
-          print(Check(amount: data["amount"], checkNumber: data["checkNumer"]));
+          GetCheckData getCheckData = GetCheckData();
+          print(getCheckData(params: result));
         },
       ),
     );
