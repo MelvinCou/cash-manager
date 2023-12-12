@@ -2,9 +2,7 @@ package com.cashmanager.server.database.entities;
 
 import com.cashmanager.server.database.enums.TransactionStatus;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -13,6 +11,8 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
+@AllArgsConstructor
+@RequiredArgsConstructor
 @Entity(name = "transactions")
 public class Transaction {
     @Id

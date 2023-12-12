@@ -16,14 +16,17 @@ jobs:
       postgres:
         image: postgres:16.1-alpine
         env:
-          POSTGRES_USER: bank_db
+          POSTGRES_USER: bank_user
           POSTGRES_PASSWORD: bank_password
           POSTGRES_DB: bank_db
           SHOP_USER: shop_user
           SHOP_PASSWORD: shop_password
           SHOP_DB: shop_db
-        volumes:
-          - './init-shop-db.sh:/docker-entrypoint-initdb.d/init-shop-db.sh'
+        ports:
+          - '5432:5432'
+        # volumes:
+        #  - '../../Server/init-shop-db.sh:/docker-entrypoint-initdb.d/init-shop-db.sh'
+        options: --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
     steps:
       - uses: actions/checkout@v2
         with:
