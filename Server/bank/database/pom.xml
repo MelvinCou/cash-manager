@@ -6,7 +6,6 @@
 		<groupId>com.cashmanager.server</groupId>
 		<artifactId>bank</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<artifactId>database</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
