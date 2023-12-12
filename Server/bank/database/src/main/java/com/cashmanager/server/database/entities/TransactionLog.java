@@ -15,7 +15,7 @@ import java.util.UUID;
 @Entity(name = "transaction_logs")
 public class TransactionLog {
     @Id
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne(optional = false)
@@ -35,7 +35,7 @@ public class TransactionLog {
 
     public static TransactionLog error(Transaction transaction, String message) {
         return new TransactionLog(
-                UUID.randomUUID(),
+                null,
                 transaction,
                 LocalDateTime.now(),
                 LogSeverity.ERROR,
@@ -44,7 +44,7 @@ public class TransactionLog {
 
     public static TransactionLog info(Transaction transaction, String message) {
         return new TransactionLog(
-                UUID.randomUUID(),
+                null,
                 transaction,
                 LocalDateTime.now(),
                 LogSeverity.INFO,
@@ -53,7 +53,7 @@ public class TransactionLog {
 
     public static TransactionLog warn(Transaction transaction, String message) {
         return new TransactionLog(
-                UUID.randomUUID(),
+                null,
                 transaction,
                 LocalDateTime.now(),
                 LogSeverity.WARN,

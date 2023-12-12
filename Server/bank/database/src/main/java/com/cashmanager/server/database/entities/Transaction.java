@@ -16,6 +16,7 @@ import java.util.UUID;
 @Entity(name = "transactions")
 public class Transaction {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne(optional = false)
