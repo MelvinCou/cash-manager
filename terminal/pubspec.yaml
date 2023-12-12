@@ -37,10 +37,14 @@ dependencies:
   equatable: ^2.0.5
   get_it: ^7.6.4
   flutter_zxing: ^1.5.0
+  either_dart: ^1.0.0
+  auto_route: ^7.8.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  auto_route_generator: ^7.3.2
+  build_runner: ^2.4.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
