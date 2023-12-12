@@ -1,10 +1,9 @@
-package com.cashmanager.server.product;
+package com.cashmanager.server.shop;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProductApplicationTests {
+class ShopApplicationTests {
 
 //    @Test
 //    void contextLoads() {

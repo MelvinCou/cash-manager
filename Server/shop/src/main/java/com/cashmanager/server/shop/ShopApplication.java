@@ -1,14 +1,14 @@
-package com.cashmanager.server.product;
+package com.cashmanager.server.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class ProductApplication {
+public class ShopApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ProductApplication.class, args);
+        SpringApplication.run(ShopApplication.class, args);
     }
 
 }
