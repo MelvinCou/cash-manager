@@ -1,4 +1,4 @@
-import 'package:terminal/features/transaction/domain/entity/status.dart';
+import 'package:terminal/common/status.dart';
 
 abstract class TransactionRepository {
   Future<void> postTransaction();

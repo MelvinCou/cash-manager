@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:terminal/common/usecase.dart';
-import 'package:terminal/features/transaction/domain/entity/status.dart';
+import 'package:terminal/common/status.dart';
 
 class GetStatus implements Equatable, UseCase<Status, void> {
   @override
