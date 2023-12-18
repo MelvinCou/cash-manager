@@ -90,7 +90,7 @@ class CreditCardVerificationTest {
 
     @Test
     void invalidCreditCard() {
-        PaymentMethod paymentMethod = PaymentMethod.createCheck(null, 123456789);
+        PaymentMethod paymentMethod = PaymentMethod.createCheck(null, 123456789, false);
         assertFalse(CreditCardVerification.isACreditCard(paymentMethod));
     }
 }
