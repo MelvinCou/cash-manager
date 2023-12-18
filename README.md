@@ -35,7 +35,7 @@ cp .env.local.exemple .env.local
 mvn --projects :[module] spring-boot:run 
 ```
 
-### Use of API_GATEWAY and EUREKA_SERVER
+### Use of API_GATEWAY and EUREKA_SERVER and MEDIATOR
 To manage the microservices of the application, you need to first launch the module eureka_server (see the command above).
-Then launch the module api_gateway.
+Then launch the module api_gateway and the module mediator.
 You can have access to the Dashboard of the eureka_server at http://localhost:8761. You will see all the microservices.
