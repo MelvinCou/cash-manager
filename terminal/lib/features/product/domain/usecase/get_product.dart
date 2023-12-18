@@ -11,11 +11,11 @@ class GetProduct implements UseCase<List<Product>, void> {
   Future<List<Product>> call({void params}) async {
     DataState result = await productRepository.getProduct();
     try {
-      if (result is DataSuccess) {
+      if (result is Success) {
         //return product list
         return result.data;
       } else {
-        throw Exception("Didn't get products ; ${result.errorMessage}");
+        throw Exception("Didn't get products ; result.errorMessage");
       }
     } catch (err) {
       // return empty array
