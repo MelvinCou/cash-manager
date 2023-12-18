@@ -1,54 +1,88 @@
-# How to become a contributor
+Sources :
+- https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-commits/
+- https://grafikart.fr/tutoriels/nommage-commit-1009
 
-✔️ You agree to the [Contributor License Agreements](https://www.contributor-covenant.org)
+## **Créer une branche ?**
 
-✔️ Make sure your code adheres to the existing style, technologies, and coding standards recommended for the respective language/framework.
-
-### **Did you find a bug? / Do you want to suggest something?**
-
-- Ensure the bug was not already reported by searching on [Issues](https://github.com/EpitechMscProPromo2025/T-POO-700-NAN_3/issues).  
-  Otherwise, create a new one. Be sure to include a **clear title and description**, as much relevant information as possible, and a **sample code** or **executable test case** demonstrating the expected behavior that does not occur.
-
-- Use issue creation templates
-
-### **Do you want to create a branch?**
-
+`<type>/<issue_ID>-<name>`
 - Your branch name should be formatted as `fix/<ISSUENUMBER>-<TITLE>` for bug fixes or `feature/<ISSUENUMBER>-<TITLE>` for features.  
   Example:  
   `fix/4221-infinite-loop`  
   `feature/4222-aws-deployement`  
   `doc/4223-RGPD-compliance`
 
-### **Do you want to fix an issue?**
+**Les types de branche :**
 
-- Create a new branch following the above convention
-- Implement your features of fixes in it.
+    - feature: Ajout d’une nouvelle fonctionnalité;
 
-### **How to title commits?**
+    - bugfix: Correction d’un bug;
 
-- Commit often!
+    - hotfix: Correction d’un bug critique;
 
-- Follow [the guidelines](https://cbea.ms/git-commit/)
+    - chore: Nettoyage du code;
 
-- Use imperative tense (avoid past tense).
+    - experiment: Expérimentation de fonctionnalités.
 
-- The title of the commit must be a summary of the content and not be too long (less than 50 characters).
+**Le nom de la branche** décrit succinctement le but de celle-ci. Certaines règles doivent être respectées :\
 
-- Prefer putting detailed information inside the commit's description.
+    - Le nom doit faire moins de 50 caractères;
+    - Le nom doit respecter la convention kebab-case (les mots doivent être en minuscule et liés par des tirets “-“);
 
-- Put special keywords at the last line of your message (`Linked`, `Closes`, ...) to link it to an issue or a pull request.  
-  See the [GitHub documentation](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue) for more information.
+Le reste fait référence au **numéro du ticket** (issue)
 
-  Example:
+**Quelques exemples** \
 
+`feature/27-add-users-controller`
+
+`hotfix/621-profile-page-error/`
+
+`experiment/63-try-api-key`
+
+`chore/924-remove-deprecated-method`
+
+## **Nommer ses commits?**
+
+**Le format**
+
+    <type>(<portée>): <sujet>
+
+    <description>
+
+    <footer>
+
+**Les types :**
+
+- build: Système de build (example : gulp, webpack, npm)
+- ci: Intégration continue (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- docs: Documentation
+- feat: Ajout d'une fonctionnalité
+- fix: Correction de bogue
+- perf: Amélioration des performances
+- refactor: Changement du code qui ne change rien au fonctionnement
+- style: Changement du style du code (sans changer la logique)
+- test: Modification des tests
+
+**Portée** définit quelle partie de votre librairie / application est affectée par le commit (cette information est optionnelle)
+
+**Sujet** contient une description succinte des changements,
+
+En utilisant l'impératif présent ("change", et non pas "changed" ou "changes")
+Sans majuscule au début\
+Pas de "." à la fin de la description
+
+**Description** permet de détailler plus en profondeur les motivations derrière le changement.\
+Les règles sont les mêmes que pour la partie Sujet.
+
+**Exemple** :
   ```sh
-  git commit -m 'Infinite loop when pressing Alt-F4
+  git commit -m 'fetaure(Sercer):Infinite loop when pressing Alt-F4
 
   This was caused by a missing check in the event loop
   The program now checks when the window is set to close
-
+  
   Linked #101'
   ```
+
 
 ### **How to submit a pull request?**
 
@@ -58,7 +92,7 @@
 
 - Once validated, merge to PR to `main` and remove the source branch with `git branch -D <branch_name>`.
 
-### **How to update your feature branch?**
+### **How to update your  branch?**
 
 Use the following commands to update your feature branch with the latest changes from `main`:
 
