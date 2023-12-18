@@ -1,11 +1,6 @@
-// ignore_for_file: avoid_print
-
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:terminal/config/app_router.dart';
 import 'package:terminal/injection_container.dart';
-import 'package:flutter_zxing/flutter_zxing.dart';
 
 void main() async {
   await initializeDependencies();

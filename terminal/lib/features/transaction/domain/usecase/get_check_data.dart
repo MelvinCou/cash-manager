@@ -1,33 +1,28 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+import 'package:terminal/common/data_state.dart';
 import 'package:terminal/common/usecase.dart';
 import 'package:terminal/features/transaction/domain/entity/check.dart';
 import 'package:flutter_zxing/flutter_zxing.dart';
 
-class GetCheckData implements Equatable, UseCase<Check, Code> {
+class GetCheckData implements UseCase<DataState, Code> {
   @override
-  Future<Check> call({Code? params}) {
-    late Check result;
-    if (params?.text.runtimeType == String) {
+  Future<DataState> call({Code? params}) {
+    late DataState result;
+    if (params is Code) {
       // params is not null and scan result contain string
-      if (params!.text!.isNotEmpty && params.text is String) {
+      if (params.text!.isNotEmpty && params.text is String) {
+        //* valild json : {"checkNumer":468516,"amount":85}
         final data = jsonDecode(params.text!);
-        result = Check(amount: data["amount"], checkNumber: data["checkNumer"]);
+
+        result = Success(
+            Check(amount: data["amount"], checkNumber: data["checkNumer"]));
       } else {
-        // the scan result is null or empty
+        result = Error("he scan result is not a string or empty");
       }
     } else {
-      // params is null
+      result = Error("params is null");
     }
     return Future(() => result);
   }
-
-  @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
-
-  @override
-  // TODO: implement stringify
-  bool? get stringify => throw UnimplementedError();
 }
