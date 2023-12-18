@@ -12,7 +12,7 @@ class MakeOrder implements UseCase<void, Order> {
     if (params != null) {
       try {
         DataState result = await productRepository.makeOrder(params);
-        if (result is DataFailed) {
+        if (result is Error) {
           throw Exception("do  something when you can't make orders");
         }
       } catch (e) {

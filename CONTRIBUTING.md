@@ -1,36 +1,29 @@
-Sources :
-- https://www.codeheroes.fr/2020/06/29/git-comment-nommer-ses-branches-et-ses-commits/
-- https://grafikart.fr/tutoriels/nommage-commit-1009
+# How to become a contributor
 
-## **Créer une branche ?**
+## **Create a branch ?**
 
 `<type>/<issue_ID>-<name>`
-- Your branch name should be formatted as `fix/<ISSUENUMBER>-<TITLE>` for bug fixes or `feature/<ISSUENUMBER>-<TITLE>` for features.  
-  Example:  
-  `fix/4221-infinite-loop`  
-  `feature/4222-aws-deployement`  
-  `doc/4223-RGPD-compliance`
 
-**Les types de branche :**
+**Branch types:**
 
-    - feature: Ajout d’une nouvelle fonctionnalité;
+    - feature: Add a new feature;
 
-    - bugfix: Correction d’un bug;
+    - bugfix: Fix a bug;
 
-    - hotfix: Correction d’un bug critique;
+    - hotfix: Correction of a critical bug;
 
-    - chore: Nettoyage du code;
+    - chore: Code cleanup;
 
-    - experiment: Expérimentation de fonctionnalités.
+    - experiment: Feature experimentation.
 
-**Le nom de la branche** décrit succinctement le but de celle-ci. Certaines règles doivent être respectées :\
+**The branch name** briefly describes the purpose of the branch. Certain rules must be respected :\
 
-    - Le nom doit faire moins de 50 caractères;
-    - Le nom doit respecter la convention kebab-case (les mots doivent être en minuscule et liés par des tirets “-“);
+    - The name must be less than 50 characters long;
+    - The name must respect the kebab-case convention (words must be in lower case and linked by hyphens "-");
 
-Le reste fait référence au **numéro du ticket** (issue)
+The rest refers to the **ticket number** (issue)
 
-**Quelques exemples** \
+**Some examples** \
 
 `feature/27-add-users-controller`
 
@@ -40,49 +33,71 @@ Le reste fait référence au **numéro du ticket** (issue)
 
 `chore/924-remove-deprecated-method`
 
-## **Nommer ses commits?**
+## **Naming your commits?**
 
-**Le format**
+**The format**
 
-    <type>(<portée>): <sujet>
+    <type>(<port>): <subject>
 
     <description>
 
     <footer>
 
-**Les types :**
+### **How to title commits?**
 
-- build: Système de build (example : gulp, webpack, npm)
-- ci: Intégration continue (example scopes: Travis, Circle, BrowserStack, SauceLabs)
-- docs: Documentation
-- feat: Ajout d'une fonctionnalité
-- fix: Correction de bogue
-- perf: Amélioration des performances
-- refactor: Changement du code qui ne change rien au fonctionnement
-- style: Changement du style du code (sans changer la logique)
-- test: Modification des tests
+- Commit often!
 
-**Portée** définit quelle partie de votre librairie / application est affectée par le commit (cette information est optionnelle)
+- Follow [the guidelines](https://cbea.ms/git-commit/)
 
-**Sujet** contient une description succinte des changements,
+- Use imperative tense (avoid past tense).
 
-En utilisant l'impératif présent ("change", et non pas "changed" ou "changes")
-Sans majuscule au début\
-Pas de "." à la fin de la description
+- The title of the commit must be a summary of the content and not be too long (less than 50 characters).
 
-**Description** permet de détailler plus en profondeur les motivations derrière le changement.\
-Les règles sont les mêmes que pour la partie Sujet.
+- Prefer putting detailed information inside the commit's description.
 
-**Exemple** :
+- Put special keywords at the last line of your message (`Linked`, `Closes`, ...) to link it to an issue or a pull request.  
+  See the [GitHub documentation](https://docs.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue) for more information.
+
+  Example:
+
   ```sh
-  git commit -m 'fetaure(Sercer):Infinite loop when pressing Alt-F4
+  git commit -m 'feat(src): Infinite loop when pressing Alt-F4
 
   This was caused by a missing check in the event loop
   The program now checks when the window is set to close
-  
+
   Linked #101'
   ```
 
+**Types:**
+
+- build: Build system (example: gulp, webpack, npm)
+- ci: Continuous integration (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+- docs: Documentation
+- feat: Added functionality
+- fix: Bug fix
+- perf: Performance improvement
+- refactor: Code change that does not alter operation
+- style: Change in code style (without changing logic)
+- test: Modification of tests
+
+**scope** defines which part of your library/application is affected by the commit (this information is optional)
+
+**Subject** contains a brief description of the changes,
+
+Using the present imperative ("change", not "changed" or "changes")
+No capital letter at the beginning
+No "." at the end of the description
+
+**Description** allows you to go into more detail about the reasons behind the change.
+The rules are the same as for the Subject section.
+
+### **Did you find a bug? / Do you want to suggest something?**
+
+- Ensure the bug was not already reported by searching on [Issues](https://github.com/EpitechMscProPromo2025/T-POO-700-NAN_3/issues).  
+  Otherwise, create a new one. Be sure to include a **clear title and description**, as much relevant information as possible, and a **sample code** or **executable test case** demonstrating the expected behavior that does not occur.
+
+- Use issue creation templates
 
 ### **How to submit a pull request?**
 
@@ -92,7 +107,7 @@ Les règles sont les mêmes que pour la partie Sujet.
 
 - Once validated, merge to PR to `main` and remove the source branch with `git branch -D <branch_name>`.
 
-### **How to update your  branch?**
+### **How to update your feature branch?**
 
 Use the following commands to update your feature branch with the latest changes from `main`:
 
