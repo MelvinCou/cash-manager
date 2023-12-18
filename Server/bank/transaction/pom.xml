@@ -45,7 +45,14 @@
 		<dependency>
 			<groupId>com.cashmanager.server</groupId>
 			<artifactId>account</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>${project.parent.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.cashmanager.server</groupId>
+			<artifactId>common</artifactId>
+			<version>${project.parent.version}</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 
