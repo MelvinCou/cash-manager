@@ -20,9 +20,9 @@ public final class AccountVerification {
      */
     public static boolean verifyBalance(Account account, BigDecimal amount) {
         /*
-         * compareTo returns -1 if the BigDecimal is less than the argument
+         * compareTo returns 1 if the BigDecimal is less than the argument
          */
-        return account.getBalance().compareTo(amount) < 0;
+        return account.getBalance().compareTo(amount) >= 0;
     }
 
     /**
@@ -30,7 +30,7 @@ public final class AccountVerification {
      * @param account the account to verify
      * @return true if the account is active, false otherwise
      */
-    public static boolean verifyState(Account account) {
+    public static boolean isActive(Account account) {
         return account.getState().equals(AccountState.ACTIVE);
     }
 }
