@@ -1,0 +1,16 @@
+package com.cashmanager.server.common.enumeration;
+
+public enum OperationStep {
+    CHECK_INVENTORY,
+    CREATE_ORDER,
+    UPDATE_INVENTORY,
+    CREATE_TRANSACTION,
+    CHECK_PAYMENT_INFO,
+    CHECK_ACCOUNT_BALANCE,
+    PAYMENT_DONE,
+    UPDATE_TRANSACTION,
+    UPDATE_ORDER,
+    ORDER_DELIVERED,
+    REVERSE_INVENTORY,
+    REVERSE_PAYMENT
+}

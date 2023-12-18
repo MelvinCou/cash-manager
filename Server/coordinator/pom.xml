@@ -18,6 +18,16 @@
     <modules>
         <module>eureka_server</module>
         <module>api_gateway</module>
+        <module>mediator</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.cashmanager.server</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 </project>
