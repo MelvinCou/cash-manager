@@ -1,14 +1,19 @@
-enum Status {
-  success,
-  error,
-  pending,
-  paymentPending,
-  inProgress,
-  over,
-  refused,
-  aborted,
-}
+/// ressource : https://dart.dev/language/branches#exhaustiveness-checking
+///   This file define  each state of the the data between the app and the server. This allow clear and distinct identification of the characteristic of each state
+///   The issues faced when handling asynchronous data in flutter: less readabily , difficulty to handle error , more difficult to handle each state of data on ui.
+/// eg:
+///  Success<int> ss = Success(5);
+/// Error<String> ee = Error("err");
+/// DataState testExhaustiveness(DataState st) => switch(st){
+///   Success() => Success("successData"),
+///   Error() => Error("err"),
+///   Pending() => Pending("dataPendingFor")
+/// };
+// Define each state of data.  This enhances code conciseness and flexibility.
+enum Status { success, error, pending }
 
+// abstract class using sealed key word
+//
 sealed class DataState<T> {
   final T? data;
   final Object? error;
@@ -28,40 +33,5 @@ class Error<T> extends DataState {
 }
 
 class Pending<T> extends DataState {
-  final T? dataPendingFor;
-
-  Pending(this.dataPendingFor) : super(null, null, state: Status.pending);
+  Pending(T dataPendingFor) : super(null, null, state: Status.pending);
 }
-
-Success<int> ss = Success(5);
-Error<String> ee = Error("err");
-// DataState wtf()=>switch (DataState) {
-//   Success(int vs) => Success(vs),
-//   Error() => Error()
-//   // TODO: Handle this case.
-//   Type() => null,
-// };
-// DataSuccess? test() => switch(DataState){
-//   DataSuccess(state:var state, data: var data) => DataSuccess(state: state, data: data)
-//   // TODO: Handle this case.
-//   Type() => null,
-// };
-
-sealed class Shape {}
-
-class Square implements Shape {
-  final double length;
-  Square(this.length);
-}
-
-class Circle implements Shape {
-  final double radius;
-  Circle(this.radius);
-}
-
-Shape calculateArea(Shape shape) => switch (shape) {
-      Square(length: var l) => Square(l * l),
-      Circle(radius: var r) => Circle(r * r)
-    };
-Square sh = Square(5);
-Shape val = calculateArea(sh);
