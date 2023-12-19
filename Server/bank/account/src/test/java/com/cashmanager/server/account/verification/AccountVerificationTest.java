@@ -1,6 +1,6 @@
 package com.cashmanager.server.account.verification;
 
-import com.cashmanager.server.database.entities.Account;
+import com.cashmanager.server.database.entity.Account;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

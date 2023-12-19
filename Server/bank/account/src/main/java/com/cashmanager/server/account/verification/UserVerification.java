@@ -1,8 +1,8 @@
 package com.cashmanager.server.account.verification;
 
-import com.cashmanager.server.database.entities.User;
-import com.cashmanager.server.database.enums.UserRole;
-import com.cashmanager.server.database.repositories.UserRepository;
+import com.cashmanager.server.database.entity.User;
+import com.cashmanager.server.database.enumeration.UserRole;
+import com.cashmanager.server.database.repository.UserRepository;
 
 public final class UserVerification {
     private static UserRepository userRepository;

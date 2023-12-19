@@ -1,7 +1,7 @@
 package com.cashmanager.server.account.verification;
 
-import com.cashmanager.server.database.entities.Account;
-import com.cashmanager.server.database.enums.AccountState;
+import com.cashmanager.server.database.entity.Account;
+import com.cashmanager.server.database.enumeration.AccountState;
 
 import java.math.BigDecimal;
 

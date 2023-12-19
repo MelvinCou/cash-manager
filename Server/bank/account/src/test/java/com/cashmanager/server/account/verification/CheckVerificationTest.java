@@ -1,7 +1,7 @@
 package com.cashmanager.server.account.verification;
 
 import com.cashmanager.server.common.utils.DateHelper;
-import com.cashmanager.server.database.entities.PaymentMethod;
+import com.cashmanager.server.database.entity.PaymentMethod;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
