@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
         useMaterial3: true,
+        fontFamily: 'Roboto'
       ),
       /*home: const MyHomePage(title: 'My Shop'),*/
     );
