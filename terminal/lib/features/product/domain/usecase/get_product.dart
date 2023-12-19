@@ -15,6 +15,7 @@ class GetProduct implements UseCase<List<Product>, void> {
         //return product list
         return result.data;
       } else {
+        //Todo: Implement error handling
         throw Exception("Didn't get products ; result.errorMessage");
       }
     } catch (err) {
