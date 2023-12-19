@@ -39,6 +39,9 @@ public class PaymentMethod {
     @Column(name = "check_number")
     private Integer checkNumber;
 
+    @Column(name = "cashed")
+    private Boolean cashed;
+
     public static PaymentMethod createCreditCard(Account account, String creditCardNumber, String cvc, LocalDateTime validityDate) {
         return new PaymentMethod(
                 null,
@@ -47,10 +50,11 @@ public class PaymentMethod {
                 creditCardNumber,
                 cvc,
                 validityDate,
+                null,
                 null);
     }
 
-    public static PaymentMethod createCheck(Account account, Integer checkNumber) {
+    public static PaymentMethod createCheck(Account account, int checkNumber, boolean cashed) {
         return new PaymentMethod(
                 null,
                 account,
@@ -58,6 +62,7 @@ public class PaymentMethod {
                 null,
                 null,
                 null,
-                checkNumber);
+                checkNumber,
+                cashed);
     }
 }

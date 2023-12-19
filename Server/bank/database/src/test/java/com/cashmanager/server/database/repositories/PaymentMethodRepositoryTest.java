@@ -50,7 +50,7 @@ class PaymentMethodRepositoryTest {
         Account account = accountRepository.save(new Account(user));
         // create check for account
         PaymentMethod paymentMethod = paymentMethodRepository.save(
-                PaymentMethod.createCheck(account, 1));
+                PaymentMethod.createCheck(account, 1, true));
 
         assertEquals(paymentMethod.getAccount().getId(), account.getId());
     }

@@ -33,7 +33,7 @@ class TransactionLogRepositoryTest {
         User user = userRepository.save(Helpers.createUser());
         Account account = accountRepository.save(new Account(user));
         PaymentMethod paymentMethod = paymentMethodRepository.save(
-                PaymentMethod.createCheck(account, 1));
+                PaymentMethod.createCheck(account, 1, false));
         transaction = transactionRepository.save(
                 Helpers.createTransaction(paymentMethod));
 
@@ -50,7 +50,7 @@ class TransactionLogRepositoryTest {
         User user = userRepository.save(Helpers.createUser());
         Account account = accountRepository.save(new Account(user));
         PaymentMethod paymentMethod = paymentMethodRepository.save(
-                PaymentMethod.createCheck(account, 1));
+                PaymentMethod.createCheck(account, 1, false));
         transaction = transactionRepository.save(
                 Helpers.createTransaction(paymentMethod));
 
@@ -67,7 +67,7 @@ class TransactionLogRepositoryTest {
         User user = userRepository.save(Helpers.createUser());
         Account account = accountRepository.save(new Account(user));
         PaymentMethod paymentMethod = paymentMethodRepository.save(
-                PaymentMethod.createCheck(account, 1));
+                PaymentMethod.createCheck(account, 1, false));
         transaction = transactionRepository.save(
                 Helpers.createTransaction(paymentMethod));
 
