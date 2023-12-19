@@ -21,7 +21,7 @@ class GetCheckData implements UseCase<DataState, Code> {
       //* valild json : {"checkNumer":468516,"amount":85}
       data = jsonDecode(params.text!);
 
-      if (data["amount"] is! int || data["checkNumer"] is! int) {
+      if (data["amount"] is! int || data["checkNumber"] is! int) {
         throw Exception("json data not valid");
       }
 
