@@ -10,7 +10,7 @@ class Product extends Equatable {
     required this.id,
     required this.name,
     required this.price,
-    required this.stock
+    required this.stock,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) {
@@ -25,7 +25,7 @@ class Product extends Equatable {
             id: id,
             name: name,
             price : price,
-            stock: stock
+            stock: stock,
           ),
       _ => throw const FormatException('Failed to load product.'),
     };
