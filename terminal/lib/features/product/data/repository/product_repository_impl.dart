@@ -37,7 +37,7 @@ class ProductRepositoryImpl implements ProductRepository {
         return DataFailed(messages);
       }
     }catch(err){
-      return Future.value();
+      return DataFailed([err.toString()]);
     }
 
   }

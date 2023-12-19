@@ -18,19 +18,19 @@ abstract class _$AppRouter extends RootStackRouter {
     LayoutRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: LayoutPage(),
+        child: const LayoutPage(),
       );
     },
     MyHomeRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: MyHomePage(),
+        child: const MyHomePage(),
       );
     },
     ProductListRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: ProductListPage(),
+        child: const ProductListPage(),
       );
     },
   };
