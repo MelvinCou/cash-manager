@@ -1,6 +1,6 @@
-package com.cashmanager.server.database.entities;
+package com.cashmanager.server.database.entity;
 
-import com.cashmanager.server.database.enums.AccountState;
+import com.cashmanager.server.database.enumeration.AccountState;
 import jakarta.persistence.*;
 import lombok.*;
 

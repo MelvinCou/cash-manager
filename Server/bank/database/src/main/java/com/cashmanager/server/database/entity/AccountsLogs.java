@@ -1,4 +1,4 @@
-package com.cashmanager.server.database.entities;
+package com.cashmanager.server.database.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
