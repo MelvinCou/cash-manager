@@ -29,3 +29,17 @@ Flutter allow bulding apk in 2 different ways. One is a fat APK that contains yo
 - arm64: This refers to ARM 64-bit, which is used by many modern Android devices.
 - x86: This refers to x86 32-bit, which is used by some older Android devices and emulators.
 - armeabi: This refers to ARM 32-bit, which is used by some older Android devices
+
+### Test
+
+Do test with `flutter test`. You can do test coverage :
+
+```sh
+# Generate `coverage/lcov.info` file
+flutter test --coverage
+# Generate HTML report
+# Note: on macOS you need to have lcov installed on your system (`brew install lcov`) to use this:
+genhtml coverage/lcov.info -o coverage/html
+# Open the report
+open coverage/html/index.html
+```
