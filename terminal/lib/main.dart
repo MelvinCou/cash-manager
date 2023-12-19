@@ -4,11 +4,11 @@ import 'package:terminal/injection_container.dart';
 
 void main() async {
   await initializeDependencies();
-  runApp( MyApp());
+  runApp( const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+   const MyApp({super.key});
   // This widget is the root of your application.
 
   @override
@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto'
       ),
-      /*home: const MyHomePage(title: 'My Shop'),*/
     );
   }
 }

@@ -5,7 +5,6 @@ import 'package:terminal/features/product/domain/repository/product.dart';
 import 'package:terminal/features/product/domain/usecase/get_all_products.dart';
 import 'package:terminal/features/product/domain/usecase/get_product.dart';
 import 'package:terminal/features/product/domain/usecase/make_order.dart';
-import 'package:terminal/features/product/presentation/pages/list_of_products/bloc/products_bloc.dart';
 
 final getIt = GetIt.instance;
 Future<void> initializeDependencies() async {
