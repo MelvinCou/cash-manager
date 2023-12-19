@@ -4,7 +4,7 @@ CREATE TABLE accounts
     user_id      UUID                        NOT NULL,
     opening_date TIMESTAMP WITHOUT TIME ZONE NOT NULL,
     state        SMALLINT                    NOT NULL,
-    balance      DECIMAL(19, 2)              NOT NULL,
+    balance      DECIMAL(19, 4)              NOT NULL,
     CONSTRAINT pk_accounts PRIMARY KEY (id)
 );
 

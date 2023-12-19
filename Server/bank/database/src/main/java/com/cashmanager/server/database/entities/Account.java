@@ -33,7 +33,7 @@ public class Account {
     @Column(name = "state", nullable = false)
     private AccountState state;
 
-    @Column(name = "balance", nullable = false, precision = 19, scale = 2)
+    @Column(name = "balance", nullable = false, precision = 19, scale = 4)
     private BigDecimal balance;
 
     @OneToMany(mappedBy = "account", orphanRemoval = true)
