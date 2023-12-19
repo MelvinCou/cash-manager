@@ -1,12 +1,10 @@
-package com.cashmanager.server.shop;
+package com.cashmanager.server.shop.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.util.Date;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 @Getter
@@ -16,21 +14,21 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "ordered_orders")
+public class OrderedOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id" ,nullable = false)
-    // GenerationType instructs that a UUID for the entity should be generated automatically for us by the persistence provider.
+    @Column( name = "id",nullable = false)
     private UUID id;
     @Column( nullable = false)
-    private String status;
-    @Column( nullable = false)
-    private Date date;
+    private Integer quantity;
 
-    @OneToMany(mappedBy = "order")
-    @ToString.Exclude
-    private Set<OrderedOrder> orderedOrders;
+    @ManyToOne
+    @JoinColumn(name = "product_id" ,nullable=false)
+    private Product product;
+    @ManyToOne
+    @JoinColumn(name = "order_id", nullable=false)
+    private Order order;
 
     @Override
     public final boolean equals(Object o) {
@@ -39,8 +37,8 @@ public class Order {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Order order = (Order) o;
-        return getId() != null && Objects.equals(getId(), order.getId());
+        OrderedOrder that = (OrderedOrder) o;
+        return getId() != null && Objects.equals(getId(), that.getId());
     }
 
     @Override
