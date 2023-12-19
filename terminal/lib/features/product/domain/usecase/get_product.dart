@@ -3,23 +3,29 @@ import 'package:terminal/common/usecase.dart';
 import 'package:terminal/features/product/domain/entity/product.dart';
 import 'package:terminal/features/product/domain/repository/product.dart';
 
-class GetProduct implements UseCase<List<Product>, void> {
+class GetProduct implements UseCase<Product?, int> {
   final ProductRepository productRepository;
 
   GetProduct({required this.productRepository});
+
   @override
-  Future<List<Product>> call({void params}) async {
-    DataState result = await productRepository.getProduct();
-    try {
-      if (result is DataSuccess) {
-        //return product list
-        return result.data;
-      } else {
-        throw Exception("Didn't get products ; ${result.errorMessage}");
+  Future<Product?> call({int? params}) async {
+    if(params != null){
+      DataState result = await productRepository.getProduct(params);
+      try {
+        if (result is DataSuccess) {
+          //return product
+          return result.data;
+        } else {
+          throw Exception("This product is not found ; ${result.errorMessage}");
+        }
+      } catch (err) {
+        // return null TODO à changer
+        return null;
       }
-    } catch (err) {
-      // return empty array
-      return [];
+    }
+    else{
+      return null;
     }
   }
 }
