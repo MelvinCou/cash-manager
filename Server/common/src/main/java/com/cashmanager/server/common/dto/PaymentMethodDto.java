@@ -1,15 +1,13 @@
 package com.cashmanager.server.common.dto;
 
+import com.cashmanager.server.common.enumeration.PaymentMethodType;
 import lombok.Data;
 
 @Data
 public class PaymentMethodDto {
-    private String type;//TODO à changer avec l'enum de Melvin
+    private PaymentMethodType type;
     private String creditCardNumber;
     private String cvc;
     private String validityDate; //conversion later in LocalDateTime
-    private String checkNumber;
-
-
-
+    private int checkNumber;
 }
