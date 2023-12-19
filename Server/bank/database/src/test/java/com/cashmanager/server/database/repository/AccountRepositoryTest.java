@@ -1,8 +1,8 @@
-package com.cashmanager.server.database.repositories;
+package com.cashmanager.server.database.repository;
 
 import com.cashmanager.server.database.DatabaseApplication;
-import com.cashmanager.server.database.entities.Account;
-import com.cashmanager.server.database.entities.User;
+import com.cashmanager.server.database.entity.Account;
+import com.cashmanager.server.database.entity.User;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

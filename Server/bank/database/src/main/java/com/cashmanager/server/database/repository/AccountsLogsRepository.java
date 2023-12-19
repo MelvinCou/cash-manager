@@ -1,6 +1,6 @@
-package com.cashmanager.server.database.repositories;
+package com.cashmanager.server.database.repository;
 
-import com.cashmanager.server.database.entities.AccountsLogs;
+import com.cashmanager.server.database.entity.AccountsLogs;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

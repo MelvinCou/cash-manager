@@ -1,13 +1,12 @@
-package com.cashmanager.server.database.repositories;
+package com.cashmanager.server.database.repository;
 
 import com.cashmanager.server.database.DatabaseApplication;
-import com.cashmanager.server.database.entities.*;
-import com.cashmanager.server.database.enums.LogSeverity;
+import com.cashmanager.server.database.entity.*;
+import com.cashmanager.server.database.enumeration.LogSeverity;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

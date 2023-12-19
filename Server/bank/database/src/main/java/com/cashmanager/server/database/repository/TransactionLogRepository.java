@@ -1,7 +1,7 @@
-package com.cashmanager.server.database.repositories;
+package com.cashmanager.server.database.repository;
 
-import com.cashmanager.server.database.entities.TransactionLog;
-import com.cashmanager.server.database.enums.LogSeverity;
+import com.cashmanager.server.database.entity.TransactionLog;
+import com.cashmanager.server.database.enumeration.LogSeverity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
