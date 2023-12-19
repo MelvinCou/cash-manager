@@ -6,6 +6,7 @@ import 'package:terminal/features/transaction/domain/entity/check.dart';
 import 'package:flutter_zxing/flutter_zxing.dart';
 
 class GetCheckData implements UseCase<DataState, Code> {
+  // test Qr code scnaning with https://fr.qr-code-generator.com/
   @override
   Future<DataState> call({Code? params}) {
     late DataState result;
@@ -18,7 +19,7 @@ class GetCheckData implements UseCase<DataState, Code> {
         throw Exception("The scan result is not a string or empty");
       }
 
-      //* valild json : {"checkNumer":468516,"amount":85}
+      //* valild json : {"checkNumber":468516,"amount":85}
       data = jsonDecode(params.text!);
 
       if (data["amount"] is! int || data["checkNumber"] is! int) {
@@ -26,7 +27,7 @@ class GetCheckData implements UseCase<DataState, Code> {
       }
 
       result = Success(
-          Check(amount: data["amount"], checkNumber: data["checkNumer"]));
+          Check(amount: data["amount"], checkNumber: data["checkNumber"]));
     } catch (e) {
       result = Error(e);
     }
@@ -34,22 +35,3 @@ class GetCheckData implements UseCase<DataState, Code> {
     return Future(() => result);
   }
 }
-    // if (params!.text != null) {
-    //   if (params.text!.isNotEmpty && params.text is String) {
-    //     //* valild json : {"checkNumer":468516,"amount":85}
-
-    //     data = jsonDecode(params.text!);
-
-    //     if (data["amount"].runtimeType is int ||
-    //         data["checkNumer"].runtimeType is int) {
-    //       result = Success(
-    //           Check(amount: data["amount"], checkNumber: data["checkNumer"]));
-    //     } else {
-    //       result = Error("json data not valid");
-    //     }
-    //   } else {
-    //     result = Error("The scan result is not a string or empty");
-    //   }
-    // } else {
-    //   result = Error("params is null");
-    // }

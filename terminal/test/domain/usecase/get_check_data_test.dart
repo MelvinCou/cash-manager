@@ -8,7 +8,7 @@ void main() {
   test('GetCheckData call method with valid JSON data', () async {
     // Arrange
     final useCase = GetCheckData();
-    final code = Code(text: '{"checkNumer":468516,"amount":85}');
+    final code = Code(text: '{"checkNumber":468516,"amount":85}');
 
     // Act
     final result = await useCase.call(params: code);
@@ -22,7 +22,7 @@ void main() {
   test('should throw exception for invalid JSON data', () async {
     // Arrange
     final useCase = GetCheckData();
-    final code = Code(text: '{"checkNumer":468516,"amount":"85"}');
+    final code = Code(text: '{"checkNumber":468516,"amount":"85"}');
 
     // Act
     final result = await useCase.call(params: code);
@@ -60,7 +60,7 @@ void main() {
   });
   test("Should return Error for unvalid check data ", () async {
     final useCase = GetCheckData();
-    final code = Code(text: '{"Checknumer":468516,"amount":HACKER}');
+    final code = Code(text: '{"checkNumber":468516,"amount":HACKER}');
 
     final result = await useCase(params: code);
 
