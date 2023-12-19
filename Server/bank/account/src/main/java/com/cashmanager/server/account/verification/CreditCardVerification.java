@@ -1,8 +1,9 @@
 package com.cashmanager.server.account.verification;
 
+import com.cashmanager.server.common.dto.PaymentMethodDto;
 import com.cashmanager.server.common.utils.DateHelper;
-import com.cashmanager.server.database.entities.PaymentMethod;
-import com.cashmanager.server.database.enums.PaymentMethodType;
+import com.cashmanager.server.database.entity.PaymentMethod;
+import com.cashmanager.server.common.enumeration.PaymentMethodType;
 
 import java.time.LocalDateTime;
 
@@ -24,6 +25,16 @@ public final class CreditCardVerification {
      */
     public static boolean isACreditCard(PaymentMethod paymentMethod) {
         return paymentMethod.getType().equals(PaymentMethodType.CARD);
+    }
+
+    /**
+     * Verify if the payment method into PaymentMethodDto is a credit card
+     *
+     * @param paymentMethodDto the payment method to verify
+     * @return true if the payment method is a credit card, false otherwise
+     */
+    public static boolean isACreditCard(PaymentMethodDto paymentMethodDto) {
+        return paymentMethodDto.getType().equals(PaymentMethodType.CARD);
     }
 
     /**
