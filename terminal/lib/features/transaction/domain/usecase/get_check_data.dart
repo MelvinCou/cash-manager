@@ -9,20 +9,47 @@ class GetCheckData implements UseCase<DataState, Code> {
   @override
   Future<DataState> call({Code? params}) {
     late DataState result;
-    if (params is Code) {
-      // params is not null and scan result contain string
-      if (params.text!.isNotEmpty && params.text is String) {
-        //* valild json : {"checkNumer":468516,"amount":85}
-        final data = jsonDecode(params.text!);
-
-        result = Success(
-            Check(amount: data["amount"], checkNumber: data["checkNumer"]));
-      } else {
-        result = Error("he scan result is not a string or empty");
+    late dynamic data;
+    try {
+      if ((params!.text == null)) {
+        throw Exception("params is null");
       }
-    } else {
-      result = Error("params is null");
+      if (params.text!.isEmpty && params.text is! String) {
+        throw Exception("The scan result is not a string or empty");
+      }
+
+      //* valild json : {"checkNumer":468516,"amount":85}
+      data = jsonDecode(params.text!);
+
+      if (data["amount"] is! int || data["checkNumer"] is! int) {
+        throw Exception("json data not valid");
+      }
+
+      result = Success(
+          Check(amount: data["amount"], checkNumber: data["checkNumer"]));
+    } catch (e) {
+      result = Error(e);
     }
+
     return Future(() => result);
   }
 }
+    // if (params!.text != null) {
+    //   if (params.text!.isNotEmpty && params.text is String) {
+    //     //* valild json : {"checkNumer":468516,"amount":85}
+
+    //     data = jsonDecode(params.text!);
+
+    //     if (data["amount"].runtimeType is int ||
+    //         data["checkNumer"].runtimeType is int) {
+    //       result = Success(
+    //           Check(amount: data["amount"], checkNumber: data["checkNumer"]));
+    //     } else {
+    //       result = Error("json data not valid");
+    //     }
+    //   } else {
+    //     result = Error("The scan result is not a string or empty");
+    //   }
+    // } else {
+    //   result = Error("params is null");
+    // }
