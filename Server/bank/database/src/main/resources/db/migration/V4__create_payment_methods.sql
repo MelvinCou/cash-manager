@@ -7,6 +7,7 @@ CREATE TABLE payment_methods
     cvc                VARCHAR(3),
     validity_date      TIMESTAMP WITHOUT TIME ZONE,
     check_number       INTEGER,
+    cashed             BOOLEAN,
     CONSTRAINT pk_payment_methods PRIMARY KEY (id)
 );
 
