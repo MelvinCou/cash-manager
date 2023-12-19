@@ -27,7 +27,7 @@ void main() {
 
   group('Pokemon Bloc tests', () {
     blocTest<ProductsBloc, ProductsState>(
-      'should succeed in fetching pokemon.',
+      'should succeed in fetching product.',
       setUp: () {
         when(getAllProducts.call())
             .thenAnswer((_) => Future.value(products));
@@ -46,7 +46,7 @@ void main() {
     );
 
     blocTest<ProductsBloc, ProductsState>(
-      'should not find pokemon to fetch and fail',
+      'should not find product to fetch and fail',
       setUp: () {
         when(getAllProducts.call())
             .thenAnswer((_) => Future.value([]));
@@ -64,7 +64,7 @@ void main() {
     );
 
     blocTest<ProductsBloc, ProductsState>(
-      'should fail to fetch pokemons after error',
+      'should fail to fetch products after error',
       setUp: () {
         when(getAllProducts.call())
             .thenThrow(StateError('fail to fetch'));
