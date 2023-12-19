@@ -1,6 +1,6 @@
-package com.cashmanager.server.database.entities;
+package com.cashmanager.server.database.entity;
 
-import com.cashmanager.server.database.enums.UserRole;
+import com.cashmanager.server.database.enumeration.UserRole;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;

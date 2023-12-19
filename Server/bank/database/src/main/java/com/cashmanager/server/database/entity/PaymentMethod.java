@@ -1,6 +1,6 @@
-package com.cashmanager.server.database.entities;
+package com.cashmanager.server.database.entity;
 
-import com.cashmanager.server.database.enums.PaymentMethodType;
+import com.cashmanager.server.common.enumeration.PaymentMethodType;
 import jakarta.persistence.*;
 import lombok.*;
 
