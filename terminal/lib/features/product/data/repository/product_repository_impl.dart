@@ -17,10 +17,10 @@ class ProductRepositoryImpl implements ProductRepository {
       // If the server did return a 200 OK response,
       // then parse the JSON.
       Product product = Product.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
-      return DataSuccess(product);
+      return Success(product);
     } else {
       List messages = ["Error"];
-      return DataFailed(messages);
+      return Error(messages);
     }
   }
 
@@ -31,13 +31,13 @@ class ProductRepositoryImpl implements ProductRepository {
       if(response.statusCode == 200){
         List body = json.decode(response.body);
         List products = body.map((e) => Product.fromJson(e)).toList();
-        return DataSuccess(products);
+        return Success(products);
       }else{
         List messages = ["Error"];
-        return DataFailed(messages);
+        return Error(messages);
       }
     }catch(err){
-      return DataFailed([err.toString()]);
+      return Error([err.toString()]);
     }
 
   }

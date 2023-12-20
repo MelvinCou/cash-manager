@@ -13,11 +13,11 @@ class GetProduct implements UseCase<Product?, int> {
     if(params != null){
       DataState result = await productRepository.getProduct(params);
       try {
-        if (result is DataSuccess) {
+        if (result is Success) {
           //return product
           return result.data;
         } else {
-          throw Exception("This product is not found ; ${result.errorMessage}");
+          throw Exception("This product is not found ; ${result.error.toString()}");
         }
       } catch (err) {
         // return null TODO à changer
