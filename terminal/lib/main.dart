@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:terminal/features/transaction/presentation/check_scan.dart';
 import 'package:terminal/injection_container.dart';
+
+import 'config/app_router.dart';
 
 void main() async {
   await initializeDependencies();

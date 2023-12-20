@@ -25,7 +25,7 @@ void main() {
     ];
   });
 
-  group('Pokemon Bloc tests', () {
+  group('Product Bloc tests', () {
     blocTest<ProductsBloc, ProductsState>(
       'should succeed in fetching product.',
       setUp: () {
