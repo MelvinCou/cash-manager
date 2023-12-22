@@ -1,4 +1,4 @@
-package com.cashmanager.server.shop;
+package com.cashmanager.server.shop.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
