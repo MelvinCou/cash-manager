@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DatabaseMigrationSettings" lastSelectedDirectory="shop/src/main/resources/db/migration" />
+  <component name="DatabaseMigrationSettings" lastSelectedDirectory="shop\product\src\main\resources\db\migration" />
   <component name="PersistenceUnitSettings">
     <persistence-units>
-      <persistence-unit name="Default">
+      <persistence-unit moduleName="shop" name="Default">
         <packages>
-          <package value="com.cashmanager.server.product" />
-  <component name="DatabaseMigrationSettings" lastSelectedDirectory="bank/database/src/main/resources/db/migration" />
-  <component name="PersistenceUnitSettings">
-    <persistence-units>
-      <persistence-unit moduleName="database" name="Default">
-        <packages>
-          <package value="com.cashmanager.server.database" />
           <package value="com.cashmanager.server.shop" />
         </packages>
       </persistence-unit>
