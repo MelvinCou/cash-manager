@@ -4,6 +4,8 @@ import com.cashmanager.server.account.verification.AccountVerification;
 import com.cashmanager.server.common.dto.TransactionDto;
 import com.cashmanager.server.common.enumeration.TransactionStatus;
 import com.cashmanager.server.database.entity.Account;
+import com.cashmanager.server.database.repository.AccountRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,6 +13,13 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class AccountService implements IAccountService {
+
+    private AccountRepository accountRepository;
+
+    @Autowired
+    public AccountService(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
 
     /**
      * Used to check if account is ACTIVE.
@@ -27,6 +36,8 @@ public class AccountService implements IAccountService {
         if (!active && !sufficientBalance) {
             transactionDto.setTransactionStatus(TransactionStatus.INSUFFICIENT_BALANCE);
             transactionDto.setTransactionStatus(TransactionStatus.INACTIVE_ACCOUNT);
+            // TODO -V- @HELP uncomment this line
+//             accountRepository.save(new AccountsLogs(null, account, "", LocalDateTime.now()));
             // TODO -> Create log, case of Account is INACTIVE and balance is insufficient
             return false;
         } else if (!active) {
