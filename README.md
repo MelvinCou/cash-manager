@@ -40,6 +40,9 @@ To manage the microservices of the application, you need to first launch the mod
 Then launch the module api_gateway and the module mediator.
 You can have access to the Dashboard of the eureka_server at http://localhost:8761. You will see all the microservices.
 
+### For the endpoints documentation
+You can access the documentation of each endpoints after launching at this address : http://<localhost:service port>/swagger-ui/index.html#. This page also allow you to try the different endpoints of the concerned service.
+
 
 # terminal
 
