@@ -5,11 +5,11 @@ import 'config/app_router.dart';
 
 void main() async {
   await initializeDependencies();
-  runApp( const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   const MyApp({super.key});
+  const MyApp({super.key});
   // This widget is the root of your application.
 
   @override
@@ -18,10 +18,9 @@ class MyApp extends StatelessWidget {
       routerConfig: appRouter.config(),
       title: 'My Shop',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
-        useMaterial3: true,
-        fontFamily: 'Roboto'
-      ),
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
+          useMaterial3: true,
+          fontFamily: 'Roboto'),
     );
   }
 }
