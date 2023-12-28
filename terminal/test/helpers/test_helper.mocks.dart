@@ -25,10 +25,6 @@ import 'package:nfc_manager/src/nfc_manager/nfc_manager.dart' as _i2;
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockNfcManager extends _i1.Mock implements _i2.NfcManager {
-  MockNfcManager() {
-    _i1.throwOnMissingStub(this);
-  }
-
   @override
   _i3.Future<bool> isAvailable() => (super.noSuchMethod(
         Invocation.method(
@@ -36,6 +32,7 @@ class MockNfcManager extends _i1.Mock implements _i2.NfcManager {
           [],
         ),
         returnValue: _i3.Future<bool>.value(false),
+        returnValueForMissingStub: _i3.Future<bool>.value(false),
       ) as _i3.Future<bool>);
 
   @override
