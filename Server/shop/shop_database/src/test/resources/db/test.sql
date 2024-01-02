@@ -1,0 +1,1 @@
+INSERT INTO products (id,name,price,product_url,stock) VALUES ('ff13f62b-87bc-4a9e-825e-f5bbc99f5f95','product01',3.0,'test.com',100);
