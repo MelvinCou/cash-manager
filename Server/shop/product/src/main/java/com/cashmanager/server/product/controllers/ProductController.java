@@ -27,7 +27,7 @@ public class ProductController {
     }
 
 
-    @GetMapping("/")
+    @GetMapping("")
     @Operation(summary = "Get all the products available in the database", description = "Returns a list of products")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved"),

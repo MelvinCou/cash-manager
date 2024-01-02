@@ -28,7 +28,7 @@ public class Product {
     private String name;
     @Column( nullable = false)
     private BigDecimal price;
-    @Column( nullable = false)
+    @Column(name = "product_url", nullable = false)
     private String productUrl;
     @Column( nullable = false)
     private Integer stock;

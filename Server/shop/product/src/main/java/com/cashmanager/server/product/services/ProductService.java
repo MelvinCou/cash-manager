@@ -32,7 +32,6 @@ public class ProductService implements IProductService {
             }
             else{
                 products.forEach(product -> {
-//                    ProductDto productDto = new ProductDto(product.getId(),product.getName(),product.getPrice(), product.getStock());
                     ProductDto productDto = ProductMapper.INSTANCE.productToProductDto(product);
                     productDtos.add(productDto);
                 });
