@@ -4,6 +4,7 @@ import com.cashmanager.server.database.entity.Account;
 import com.cashmanager.server.database.enumeration.AccountState;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 public final class AccountVerification {
     /**
@@ -18,11 +19,11 @@ public final class AccountVerification {
      * @param amount the amount of the transaction
      * @return true if the account has enough balance, false otherwise
      */
-    public static boolean verifyBalance(Account account, BigDecimal amount) {
+    public static boolean verifyBalance(Optional<Account> account, BigDecimal amount) {
         /*
          * compareTo returns 1 if the BigDecimal is less than the argument
          */
-        return account.getBalance().compareTo(amount) >= 0;
+        return account.get().getBalance().compareTo(amount) >= 0;
     }
 
     /**
@@ -30,7 +31,7 @@ public final class AccountVerification {
      * @param account the account to verify
      * @return true if the account is active, false otherwise
      */
-    public static boolean isActive(Account account) {
-        return account.getState().equals(AccountState.ACTIVE);
+    public static boolean isActive(Optional<Account> account) {
+        return account.get().getState().equals(AccountState.ACTIVE);
     }
 }
