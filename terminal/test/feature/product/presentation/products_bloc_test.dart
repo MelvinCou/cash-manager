@@ -19,9 +19,9 @@ void main() {
     EquatableConfig.stringify = true;
     getAllProducts = MockGetAllProducts();
     productsBloc = ProductsBloc(getAllProducts: getAllProducts);
-    products= [const Product(id :1,name :"poivrons",price : 5.0, stock :100),
-      const Product(id :1,name :"salades",price : 5.0, stock :100),
-      const Product(id :1,name :"oignons",price : 5.0, stock :100)
+    products= [const Product(id : "4c589f34-12a6-4075-a1ea-ad3b9009c8e1",name :"poivrons",price : 5.0, stock :100),
+      const Product(id :"4c589f34-12a6-4075-a1ea-ad3b9009c8e1",name :"salades",price : 5.0, stock :100),
+      const Product(id :"4c589f34-12a6-4075-a1ea-ad3b9009c8e1",name :"oignons",price : 5.0, stock :100)
     ];
   });
 

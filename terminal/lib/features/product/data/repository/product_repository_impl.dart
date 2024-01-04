@@ -10,7 +10,7 @@ import '../../domain/entity/product.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
   @override
-  Future<DataState> getProduct(int id) async {
+  Future<DataState> getProduct(String id) async {
     final response = await http.get(Uri.parse('')); //TODO
 
     if (response.statusCode == 200) {
