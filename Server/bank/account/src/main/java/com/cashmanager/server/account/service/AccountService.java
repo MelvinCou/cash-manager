@@ -4,9 +4,14 @@ import com.cashmanager.server.account.verification.AccountVerification;
 import com.cashmanager.server.common.dto.TransactionDto;
 import com.cashmanager.server.common.enumeration.TransactionStatus;
 import com.cashmanager.server.database.entity.Account;
+import com.cashmanager.server.database.entity.AccountsLogs;
 import com.cashmanager.server.database.repository.AccountRepository;
+import com.cashmanager.server.database.repository.AccountsLogsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
 
 /**
  * Service class in charge of check detail from Account model
@@ -14,11 +19,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class AccountService implements IAccountService {
 
-    private AccountRepository accountRepository;
+    private final AccountsLogsRepository accountsLogsRepository;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AccountService(AccountRepository accountRepository,
+                          AccountsLogsRepository accountsLogsRepository) {
+        this.accountsLogsRepository = accountsLogsRepository;
     }
 
     /**
@@ -28,7 +34,7 @@ public class AccountService implements IAccountService {
      * @return boolean
      */
     @Override
-    public boolean checkAccountValidity(Account account, TransactionDto transactionDto) {
+    public boolean checkAccountValidity(Optional<Account> account, TransactionDto transactionDto) {
 
         boolean active = AccountVerification.isActive(account);
         boolean sufficientBalance = AccountVerification.verifyBalance(account, transactionDto.getAmount());
@@ -36,17 +42,18 @@ public class AccountService implements IAccountService {
         if (!active && !sufficientBalance) {
             transactionDto.setTransactionStatus(TransactionStatus.INSUFFICIENT_BALANCE);
             transactionDto.setTransactionStatus(TransactionStatus.INACTIVE_ACCOUNT);
-            // TODO -V- @HELP uncomment this line
-//             accountRepository.save(new AccountsLogs(null, account, "", LocalDateTime.now()));
-            // TODO -> Create log, case of Account is INACTIVE and balance is insufficient
+             accountsLogsRepository.save(new AccountsLogs(null, account.get(), "insufficient balance and inactive account", LocalDateTime.now()));
+
             return false;
         } else if (!active) {
             transactionDto.setTransactionStatus(TransactionStatus.INACTIVE_ACCOUNT);
-            // TODO -> Create log, case of Account is INACTIVE
+            accountsLogsRepository.save(new AccountsLogs(null, account.get(), "inactive account", LocalDateTime.now()));
+
             return false;
         } else if (!sufficientBalance) {
             transactionDto.setTransactionStatus(TransactionStatus.INSUFFICIENT_BALANCE);
-            // TODO -> Create log, case of balance is insufficient
+            accountsLogsRepository.save(new AccountsLogs(null, account.get(), "insufficient balance", LocalDateTime.now()));
+
             return false;
         }
         transactionDto.setTransactionStatus(TransactionStatus.PAYMENT_IN_PROGRESS);
