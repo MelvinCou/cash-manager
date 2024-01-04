@@ -22,11 +22,10 @@ import java.util.Optional;
  * Used to verify and validate payment method during payment step.
  */
 @Service
-public class PaymentMethodService implements IPaymentMethodService{
+public class PaymentMethodService implements IPaymentMethodService {
 
     private final PaymentMethodRepository paymentMethodRepository;
     private final TransactionLogRepository transactionLogRepository;
-    private TransactionMapper transactionMapper;
 
     @Autowired
     public PaymentMethodService(PaymentMethodRepository paymentMethodRepository, TransactionLogRepository transactionLogRepository) {
@@ -36,9 +35,9 @@ public class PaymentMethodService implements IPaymentMethodService{
 
     /**
      * Used to get and validate if PaymentMethod is viable
-     * @param paymentMethodDto  - PaymentMethod send from mediator
-     * @param transactionDto    - Current transaction
-     * @return                  - User's payment method, returned from database
+     * @param paymentMethodDto - PaymentMethod send from mediator
+     * @param transactionDto   - Current transaction
+     * @return                 - User's payment method, returned from database
      */
     @Override
     public Optional<PaymentMethod> checkPaymentMethodViability(PaymentMethodDto paymentMethodDto, TransactionDto transactionDto) {
@@ -47,27 +46,27 @@ public class PaymentMethodService implements IPaymentMethodService{
 
             paymentMethod = paymentMethodRepository.findByCreditCardNumberAndCvc(paymentMethodDto.getCreditCardNumber(), paymentMethodDto.getCvc());
             if (paymentMethod.isEmpty()) { // Case of paymentMethod credit card isn't found
-                transactionLogRepository.save(new TransactionLog(null, transactionMapper.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none credit card payment method was found"));
                 transactionDto.setTransactionStatus(TransactionStatus.INCORRECT_PAYMENT_INFO);
+                transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none credit card payment method was found"));
                 return paymentMethod;
             }
-            transactionLogRepository.save(new TransactionLog(null, transactionMapper.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.INFO, "credit card payment method was found"));
             transactionDto.setTransactionStatus(TransactionStatus.PAYMENT_IN_PROGRESS);
+            transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.INFO, "credit card payment method was found"));
 
         } else if (CheckVerification.isACheck(paymentMethodDto)) {
 
             paymentMethod = paymentMethodRepository.findByCheckNumber(paymentMethodDto.getCheckNumber());
             if (paymentMethod.isEmpty()) { // Case of paymentMethod check wasn't found
-                transactionLogRepository.save(new TransactionLog(null, transactionMapper.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none check payment method was found"));
                 transactionDto.setTransactionStatus(TransactionStatus.INCORRECT_PAYMENT_INFO);
+                transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none check payment method was found"));
                 return paymentMethod;
             }
-            transactionLogRepository.save(new TransactionLog(null, transactionMapper.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.INFO, "check payment method was found"));
             transactionDto.setTransactionStatus(TransactionStatus.PAYMENT_IN_PROGRESS);
+            transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.INFO, "check payment method was found"));
 
         } else { // Case of PaymentMethod wasn't check or card
-            transactionLogRepository.save(new TransactionLog(null, transactionMapper.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none payment method was found"));
             transactionDto.setTransactionStatus(TransactionStatus.INCORRECT_PAYMENT_INFO);
+            transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none payment method was found"));
         }
         return paymentMethod;
     }
