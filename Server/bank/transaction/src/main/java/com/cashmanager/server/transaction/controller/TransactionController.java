@@ -46,7 +46,7 @@ public class TransactionController {
 
         Optional<PaymentMethod> paymentMethod = paymentMethodService.checkPaymentMethodViability(paymentMethodDto, transactionDto);
         if (paymentMethod.isPresent()) {
-            if (accountService.checkAccountValidity(accountRepository.findById(paymentMethod.get().getAccount().getId()), transactionDto)) {
+            if (accountService.checkAccountValidity(paymentMethod.get().getAccount().getId(), transactionDto)) {
                 transactionDto.setTransactionStatus(TransactionStatus.PAYMENT_ACCEPTED);
 
                 saveTransaction(paymentMethodDto, transactionDto, transactionHolder);
