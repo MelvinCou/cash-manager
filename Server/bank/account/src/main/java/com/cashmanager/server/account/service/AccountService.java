@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Service class in charge of check detail from Account model
@@ -19,23 +20,26 @@ import java.util.Optional;
 @Service
 public class AccountService implements IAccountService {
 
+    private final AccountRepository accountRepository;
     private final AccountsLogsRepository accountsLogsRepository;
 
     @Autowired
     public AccountService(AccountRepository accountRepository,
                           AccountsLogsRepository accountsLogsRepository) {
+        this.accountRepository = accountRepository;
         this.accountsLogsRepository = accountsLogsRepository;
     }
 
     /**
      * Used to check if account is ACTIVE.
      * Create log otherwise
-     * @param account of user which want to pay
+     * @param accountId of user which want to pay
      * @return boolean
      */
     @Override
-    public boolean checkAccountValidity(Optional<Account> account, TransactionDto transactionDto) {
+    public boolean checkAccountValidity(UUID accountId, TransactionDto transactionDto) {
 
+        Optional<Account> account = accountRepository.findById(accountId);
         boolean active = AccountVerification.isActive(account);
         boolean sufficientBalance = AccountVerification.verifyBalance(account, transactionDto.getAmount());
 
