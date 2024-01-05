@@ -146,10 +146,13 @@ public class AccountService implements IAccountService {
         Optional<Account> clientAccount = accountRepository.findById(clientAccountDto.getId());
 
         if (storeAccount.isEmpty() && clientAccount.isEmpty()) {
+            transactionDto.setTransactionStatus(TransactionStatus.CANCELED);
             accountsLogsRepository.save(new AccountsLogs(null, null, "store account and client account are not found", LocalDateTime.now()));
         } else if (storeAccount.isEmpty()) {
+            transactionDto.setTransactionStatus(TransactionStatus.CANCELED);
             accountsLogsRepository.save(new AccountsLogs(null, null, "store account is not found", LocalDateTime.now()));
         } else if (clientAccount.isEmpty()) {
+            transactionDto.setTransactionStatus(TransactionStatus.CANCELED);
             accountsLogsRepository.save(new AccountsLogs(null, null, "client account is not found", LocalDateTime.now()));
         } else {
 
@@ -157,9 +160,10 @@ public class AccountService implements IAccountService {
 
             Account updatedStoreAccount = accountRepository.save(storeAccount.get());
             if (updatedStoreAccount != storeAccount.get()) {    // Store account Update went well
-                accountsLogsRepository.save(new AccountsLogs(null, updatedStoreAccount, "store account balance is updated", LocalDateTime.now()));
                 transactionDto.setTransactionStatus(TransactionStatus.PAYMENT_IN_PROGRESS);
+                accountsLogsRepository.save(new AccountsLogs(null, updatedStoreAccount, "store account balance is updated", LocalDateTime.now()));
             } else {                                            // Store account update did not work
+                transactionDto.setTransactionStatus(TransactionStatus.CANCELED);
                 accountsLogsRepository.save(new AccountsLogs(null, updatedStoreAccount, "store account balance has not updated", LocalDateTime.now()));
 
                 return false;
@@ -169,14 +173,16 @@ public class AccountService implements IAccountService {
 
             Account updatedClientAccount = accountRepository.save(clientAccount.get());
             if (updatedClientAccount != clientAccount.get()) {   // Client account Update went well
-                accountsLogsRepository.save(new AccountsLogs(null, updatedClientAccount, "client account balance is updated", LocalDateTime.now()));
                 transactionDto.setTransactionStatus(TransactionStatus.PAYMENT_IN_PROGRESS);
+                accountsLogsRepository.save(new AccountsLogs(null, updatedClientAccount, "client account balance is updated", LocalDateTime.now()));
 
                 return true;                                    // --- EVERYTHING OK ---
             } else {                                            // Client account update did not work
+                transactionDto.setTransactionStatus(TransactionStatus.CANCELED);
                 accountsLogsRepository.save(new AccountsLogs(null, clientAccount.get(), "client account balance has not updated", LocalDateTime.now()));
 
                 while (revertBalanceStoreAccount(storeAccount)) {
+                    transactionDto.setTransactionStatus(TransactionStatus.CANCELED);
                     accountsLogsRepository.save(new AccountsLogs(null, storeAccount.get(), "store account balance not yet revert", LocalDateTime.now()));
                 }
             }
