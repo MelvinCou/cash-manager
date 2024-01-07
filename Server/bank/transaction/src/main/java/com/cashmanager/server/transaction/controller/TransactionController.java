@@ -17,6 +17,7 @@ import com.cashmanager.server.database.repository.TransactionLogRepository;
 import com.cashmanager.server.database.repository.TransactionRepository;
 import com.cashmanager.server.transaction.model.AccountTransactionHolder;
 import com.cashmanager.server.transaction.model.TransactionHolder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,12 @@ public class TransactionController {
     private AccountRepository accountRepository;
     private PaymentMethodService paymentMethodService;
     private AccountService accountService;
+
+    @Autowired
+    public TransactionController(TransactionRepository transactionRepository, PaymentMethodService paymentMethodService) {
+        this.transactionRepository = transactionRepository;
+        this.paymentMethodService = paymentMethodService;
+    }
 
     /**
      * Starting point from mediator for payment method and transaction steps
