@@ -1,7 +1,7 @@
-package com.cashmanager.server.product.services.mappers;
+package com.cashmanager.server.shop_database.mapper;
 
 import com.cashmanager.server.common.dto.ProductDto;
-import com.cashmanager.server.shop_database.entities.Product;
+import com.cashmanager.server.shop_database.entity.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

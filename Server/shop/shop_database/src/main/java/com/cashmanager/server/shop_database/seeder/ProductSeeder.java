@@ -1,8 +1,8 @@
-package com.cashmanager.server.shop_database.seeders;
+package com.cashmanager.server.shop_database.seeder;
 
 
-import com.cashmanager.server.shop_database.entities.Product;
-import com.cashmanager.server.shop_database.repositories.ProductRepository;
+import com.cashmanager.server.shop_database.entity.Product;
+import com.cashmanager.server.shop_database.repository.ProductRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

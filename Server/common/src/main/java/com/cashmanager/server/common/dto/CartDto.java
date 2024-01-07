@@ -1,10 +1,12 @@
 package com.cashmanager.server.common.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Map;
 
 @Data
+@NoArgsConstructor
 public class CartDto {
-    Map<Integer, ProductDto> listOrderedProducts;
+    private Map<Integer, ProductDto> listOrderedProducts;
 }

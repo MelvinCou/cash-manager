@@ -10,6 +10,7 @@ public class ProductDto {
     private UUID id;
     private String name;
     private BigDecimal price;
+    private String productUrl;
     private int stock;
 
     public ProductDto(UUID id, String name, BigDecimal price, int stock) {
