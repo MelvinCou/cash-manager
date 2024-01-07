@@ -1,4 +1,4 @@
-package com.cashmanager.server.mediator.service;
+package com.cashmanager.server.mediator.service.impl;
 
 import com.cashmanager.server.common.dto.CartDto;
 import com.cashmanager.server.common.dto.OrderDto;
@@ -9,7 +9,7 @@ import com.cashmanager.server.common.enumeration.OperationStep;
 import com.cashmanager.server.common.enumeration.OrderStatus;
 import com.cashmanager.server.common.enumeration.TransactionStatus;
 import com.cashmanager.server.common.utils.Messages;
-import com.cashmanager.server.mediator.service.interfaces.IMediatorService;
+import com.cashmanager.server.mediator.service.IMediatorService;
 import com.cashmanager.server.mediator.utils.*;
 import org.springframework.stereotype.Service;
 
@@ -66,7 +66,7 @@ public class MediatorService implements IMediatorService {
             }
         }
         //Step : update the order (when payment process is done (success or not))
-        TransmitterResponse<String> response = shopTransmitter.updateOrder(orderStatus, orderId);
+        TransmitterResponse<String> response = shopTransmitter.updateOrder(orderId, orderStatus);
         if(response.getOperationStep().equals(OperationStep.UPDATE_ORDER)
                 && response.getOperationStatus().equals(OperationStatus.SUCCESS) ){
             message = Messages.format("order_update", orderId);

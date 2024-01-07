@@ -55,7 +55,7 @@ public interface OrderMapper {
      * @return the appropriate CartDto
      */
     default CartDto orderedOrdersToCart(Set<OrderedOrder> orderedOrders){
-        Map<Integer, ProductDto> listOfOrderedProducts = new HashMap<>();
+        Map<Integer,ProductDto> listOfOrderedProducts = new HashMap<>();
         orderedOrders.forEach(orderedOrder -> {
             listOfOrderedProducts.put(orderedOrder.getQuantity(),ProductMapper.INSTANCE.productToProductDto(orderedOrder.getProduct()));
         });
@@ -89,7 +89,7 @@ public interface OrderMapper {
      */
     default Set<OrderedOrder> cartToOrderedOrders(CartDto cart){
         Set<OrderedOrder> orderedOrders = new HashSet<>();
-        cart.getListOrderedProducts().forEach((quantity, productDto) -> {
+        cart.getListOrderedProducts().forEach((quantity,productDto) -> {
             OrderedOrder orderedOrder = new OrderedOrder();
             orderedOrder.setProduct(ProductMapper.INSTANCE.productDtoToProduct(productDto));
             orderedOrder.setQuantity(quantity);

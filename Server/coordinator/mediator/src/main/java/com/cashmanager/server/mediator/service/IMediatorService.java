@@ -1,4 +1,4 @@
-package com.cashmanager.server.mediator.service.interfaces;
+package com.cashmanager.server.mediator.service;
 
 import com.cashmanager.server.common.dto.CartDto;
 import com.cashmanager.server.common.dto.PaymentMethodDto;

@@ -7,16 +7,18 @@ import com.cashmanager.server.common.enumeration.TransactionStatus;
 import com.cashmanager.server.common.utils.Messages;
 import com.cashmanager.server.mediator.utils.MediatorResponse;
 import com.cashmanager.server.mediator.utils.ObjectHolder;
-import com.cashmanager.server.mediator.service.interfaces.IMediatorService;
+import com.cashmanager.server.mediator.service.IMediatorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
 @RestController
+@RequestMapping(value = "/api/mediator")
 public class MediatorController {
 
     private final IMediatorService mediatorService;
@@ -25,7 +27,7 @@ public class MediatorController {
         this.mediatorService = mediatorService;
     }
 
-    @PostMapping("/mediator")
+    @PostMapping("")
     public ResponseEntity<String> newOrderAndPayment(@RequestBody ObjectHolder objectHolder){
         String message ="";
         UUID orderId = null;
@@ -40,7 +42,6 @@ public class MediatorController {
             if(mediatorResponse1.getCurrentOperationStep().equals(OperationStep.CREATE_ORDER)
                     && mediatorResponse1.getOperationStatus().equals(OperationStatus.SUCCESS)){
                 orderId = mediatorResponse1.getItemId();
-
                 //Send the payment info and the amount of the order
                 MediatorResponse mediatorResponse2 = mediatorService.notify(OperationStep.CREATE_TRANSACTION,objectHolder.getPaymentMethod(),objectHolder.getAmount(), objectHolder.getReceiver());
                 transactionId = mediatorResponse2.getItemId();

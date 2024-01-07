@@ -70,7 +70,7 @@ public class OrderService implements IOrderService {
              order.setOrderedOrders(new HashSet<>());
              //Creation of a copy of order necessary for the lambda expression
              Order finalOrder = order;
-             cartDto.getListOrderedProducts().forEach((quantity, productDto) -> {
+             cartDto.getListOrderedProducts().forEach((quantity,productDto) -> {
                  //create a new orderedOrder for each product ordered
                  OrderedOrder orderedOrdered = new OrderedOrder();
                  orderedOrdered.setOrder(finalOrder);
