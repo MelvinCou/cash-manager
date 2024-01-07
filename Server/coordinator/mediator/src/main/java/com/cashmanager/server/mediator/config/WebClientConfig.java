@@ -12,7 +12,7 @@ public class WebClientConfig {
     public WebClient webClient() {
 
         return WebClient.builder()
-                .baseUrl("http://localhost:8087")// TODO change when connecting to API_GATEWAY
+                .baseUrl("http://localhost:9191/api")
                 .defaultCookie("cookie-name", "cookie-value")
                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .build();

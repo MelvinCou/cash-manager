@@ -14,7 +14,7 @@ public interface IOrderService {
      * Check if the inventory contains all the wanted products
      * @return Empty message if check ok, or the list of products unavailable
      */
-    Optional<String> checkInventory(Map<Integer, ProductDto> orderedProducts);
+    Optional<String> checkInventory(Map<Integer,ProductDto> orderedProducts);
 
     /**
      * Create a new Order from the validated cart

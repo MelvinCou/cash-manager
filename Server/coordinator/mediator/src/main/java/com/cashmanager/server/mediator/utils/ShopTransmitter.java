@@ -35,11 +35,11 @@ public class ShopTransmitter {
         //Communication with the ShopModule
         try{
             Mono<ResponseEntity<OrderDto>> monoResponse = webClient.post()
-                    .uri("/api/shop/orders")
+                    .uri("/shop/orders")
                     .body(Mono.just(cart), CartDto.class)
                     .retrieve()
                     .toEntity(OrderDto.class);
-            ResponseEntity<OrderDto> responseEntity = monoResponse.block(Duration.of(1000, ChronoUnit.MILLIS));
+            ResponseEntity<OrderDto> responseEntity = monoResponse.block(Duration.of(1500, ChronoUnit.MILLIS));
             assert responseEntity != null;
             if(responseEntity.getStatusCode().is2xxSuccessful()){
                 response.setData(responseEntity.getBody());
@@ -62,7 +62,7 @@ public class ShopTransmitter {
         //Communication with the ShopModule
         try {
             Mono<ResponseEntity<String>> monoResponse = webClient.post()
-                    .uri("/api/shop/orders/" + orderId)
+                    .uri("/shop/orders/" + orderId)
                     .body(Mono.just(orderStatus), OrderStatus.class)
                     .retrieve()
                     .toEntity(String.class);

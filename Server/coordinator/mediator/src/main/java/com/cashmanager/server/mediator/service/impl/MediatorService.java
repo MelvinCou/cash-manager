@@ -1,4 +1,4 @@
-package com.cashmanager.server.mediator.service;
+package com.cashmanager.server.mediator.service.impl;
 
 import com.cashmanager.server.common.dto.CartDto;
 import com.cashmanager.server.common.dto.OrderDto;
@@ -9,7 +9,7 @@ import com.cashmanager.server.common.enumeration.OperationStep;
 import com.cashmanager.server.common.enumeration.OrderStatus;
 import com.cashmanager.server.common.enumeration.TransactionStatus;
 import com.cashmanager.server.common.utils.Messages;
-import com.cashmanager.server.mediator.service.interfaces.IMediatorService;
+import com.cashmanager.server.mediator.service.IMediatorService;
 import com.cashmanager.server.mediator.utils.*;
 import org.springframework.stereotype.Service;
 
