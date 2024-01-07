@@ -40,6 +40,17 @@ To manage the microservices of the application, you need to first launch the mod
 Then launch the module api_gateway and the module mediator.
 You can have access to the Dashboard of the eureka_server at http://localhost:8080. You will see all the microservices.
 
+Server port for the modules :
+- EUREKA_SERVER : 8080
+- API_GATEWAY : 9191
+- MEDIATOR :  8081
+- ACCOUNT : 8082
+- BANK-DATABASE : 8083
+- TRANSACTION : 8084
+- PRODUCT : 8085
+- SHOP-DATABASE : 8086
+- ORDER : 8087
+
 ### For the endpoints documentation
 You can access the documentation of each endpoints after launching at this address : http://<localhost:service port>/swagger-ui/index.html#. This page also allow you to try the different endpoints of the concerned service.
 

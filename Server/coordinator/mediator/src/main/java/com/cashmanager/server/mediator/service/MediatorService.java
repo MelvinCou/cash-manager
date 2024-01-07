@@ -66,7 +66,7 @@ public class MediatorService implements IMediatorService {
             }
         }
         //Step : update the order (when payment process is done (success or not))
-        TransmitterResponse<String> response = shopTransmitter.updateOrder(orderStatus, orderId);
+        TransmitterResponse<String> response = shopTransmitter.updateOrder(orderId, orderStatus);
         if(response.getOperationStep().equals(OperationStep.UPDATE_ORDER)
                 && response.getOperationStatus().equals(OperationStatus.SUCCESS) ){
             message = Messages.format("order_update", orderId);

@@ -40,7 +40,7 @@ public class MediatorController {
             if(mediatorResponse1.getCurrentOperationStep().equals(OperationStep.CREATE_ORDER)
                     && mediatorResponse1.getOperationStatus().equals(OperationStatus.SUCCESS)){
                 orderId = mediatorResponse1.getItemId();
-
+                System.out.println("ID ORDER "+mediatorResponse1.getItemId());
                 //Send the payment info and the amount of the order
                 MediatorResponse mediatorResponse2 = mediatorService.notify(OperationStep.CREATE_TRANSACTION,objectHolder.getPaymentMethod(),objectHolder.getAmount(), objectHolder.getReceiver());
                 transactionId = mediatorResponse2.getItemId();

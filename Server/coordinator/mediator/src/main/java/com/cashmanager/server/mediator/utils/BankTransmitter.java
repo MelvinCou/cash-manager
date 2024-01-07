@@ -37,22 +37,22 @@ public class BankTransmitter {
         response.setData(transaction);
 
         //TODO communication with BankController
-        try{
-            Mono<ResponseEntity<String>> monoTransac = webClient.post()
-                    .uri("/webclient")
-                    .body(Mono.just("paymentMethod"), String.class)
-                    .retrieve()
-                    .toEntity(String.class);
-
-            monoTransac.subscribe(
-                    responseEntity -> {
-                        System.out.println("Status: " + responseEntity.getStatusCode());
-                        System.out.println("Location URI: " + responseEntity.getHeaders().getLocation());
-                        System.out.println("Message: " + responseEntity.getBody());
-                    });
-        }catch (Exception e){
-            System.out.println("error");
-        }
+//        try{
+//            Mono<ResponseEntity<String>> monoTransac = webClient.post()
+//                    .uri("/webclient")
+//                    .body(Mono.just("paymentMethod"), String.class)
+//                    .retrieve()
+//                    .toEntity(String.class);
+//
+//            monoTransac.subscribe(
+//                    responseEntity -> {
+//                        System.out.println("Status: " + responseEntity.getStatusCode());
+//                        System.out.println("Location URI: " + responseEntity.getHeaders().getLocation());
+//                        System.out.println("Message: " + responseEntity.getBody());
+//                    });
+//        }catch (Exception e){
+//            System.out.println("error");
+//        }
 
 
         return response;
