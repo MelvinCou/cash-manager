@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "productEntityManagerFactory",
                         transactionManagerRef = "productTransactionManager",
-                        basePackages = {"com.cashmanager.server.shop_database.repositories"})
+                        basePackages = {"com.cashmanager.server.shop_database.repository"})
 public class ProductDatasourceConfiguration {
 
     @Primary
@@ -43,7 +43,7 @@ public class ProductDatasourceConfiguration {
     @Bean(name = "productEntityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean (EntityManagerFactoryBuilder builder, @Qualifier("productDataSource") DataSource dataSource){
         return builder.dataSource(dataSource)
-                .packages("com.cashmanager.server.shop_database.entities")
+                .packages("com.cashmanager.server.shop_database.entity")
                 .persistenceUnit("products").build();
     }
 

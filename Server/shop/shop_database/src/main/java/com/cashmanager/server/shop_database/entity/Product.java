@@ -1,10 +1,12 @@
-package com.cashmanager.server.shop_database.entities;
+package com.cashmanager.server.shop_database.entity;
+
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.util.Date;
+import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -16,21 +18,33 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @Entity
-@Table(name = "orders")
-public class Order {
+@Table(name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id" ,nullable = false)
-    // GenerationType instructs that a UUID for the entity should be generated automatically for us by the persistence provider.
+    @Column( name = "id",nullable = false)
     private UUID id;
     @Column( nullable = false)
-    private String status;
+    private String name;
     @Column( nullable = false)
-    private Date date;
+    private BigDecimal price;
+    @Column(name = "product_url", nullable = false)
+    private String productUrl;
+    @Column( nullable = false)
+    private Integer stock;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy="product")
     @ToString.Exclude
     private Set<OrderedOrder> orderedOrders;
+
+
+    public Product(String name, BigDecimal price, String productUrl, Integer stock) {
+        this.name = name;
+        this.price = price;
+        this.stock = stock;
+        this.productUrl = productUrl;
+        this.orderedOrders = new HashSet<>();
+    }
 
     @Override
     public final boolean equals(Object o) {
@@ -39,8 +53,8 @@ public class Order {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Order order = (Order) o;
-        return getId() != null && Objects.equals(getId(), order.getId());
+        Product product = (Product) o;
+        return getId() != null && Objects.equals(getId(), product.getId());
     }
 
     @Override

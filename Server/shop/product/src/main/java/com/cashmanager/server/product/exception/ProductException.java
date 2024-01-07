@@ -1,4 +1,4 @@
-package com.cashmanager.server.product.exceptions;
+package com.cashmanager.server.product.exception;
 
 /**
  * Class that will be thrown when an error occur while communicated with the database

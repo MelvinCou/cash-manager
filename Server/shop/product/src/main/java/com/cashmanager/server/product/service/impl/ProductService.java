@@ -1,12 +1,12 @@
-package com.cashmanager.server.product.services;
+package com.cashmanager.server.product.service.impl;
 
 import com.cashmanager.server.common.dto.ProductDto;
-import com.cashmanager.server.product.exceptions.ProductException;
-import com.cashmanager.server.product.services.interfaces.IProductService;
-import com.cashmanager.server.product.services.mappers.ProductMapper;
+import com.cashmanager.server.product.exception.ProductException;
+import com.cashmanager.server.product.service.IProductService;
 
-import com.cashmanager.server.shop_database.entities.Product;
-import com.cashmanager.server.shop_database.repositories.ProductRepository;
+import com.cashmanager.server.shop_database.entity.Product;
+import com.cashmanager.server.shop_database.mapper.ProductMapper;
+import com.cashmanager.server.shop_database.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

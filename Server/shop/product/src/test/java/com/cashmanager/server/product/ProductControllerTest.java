@@ -1,7 +1,7 @@
 package com.cashmanager.server.product;
 
 import com.cashmanager.server.common.dto.ProductDto;
-import com.cashmanager.server.product.services.interfaces.IProductService;
+import com.cashmanager.server.product.service.IProductService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;

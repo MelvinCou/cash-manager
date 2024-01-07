@@ -1,7 +1,7 @@
-package com.cashmanager.server.product.services.interfaces;
+package com.cashmanager.server.product.service;
 
 import com.cashmanager.server.common.dto.ProductDto;
-import com.cashmanager.server.product.exceptions.ProductException;
+import com.cashmanager.server.product.exception.ProductException;
 
 import java.util.List;
 import java.util.Optional;

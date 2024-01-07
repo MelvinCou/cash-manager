@@ -8,6 +8,11 @@
           <package value="com.cashmanager.server.shop" />
         </packages>
       </persistence-unit>
+      <persistence-unit moduleName="shop_database" name="Default">
+        <packages>
+          <package value="com.cashmanager.server.shop_database" />
+        </packages>
+      </persistence-unit>
     </persistence-units>
   </component>
 </project>

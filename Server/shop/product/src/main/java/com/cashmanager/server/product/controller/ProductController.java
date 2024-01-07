@@ -1,8 +1,8 @@
-package com.cashmanager.server.product.controllers;
+package com.cashmanager.server.product.controller;
 
 import com.cashmanager.server.common.dto.ProductDto;
-import com.cashmanager.server.product.exceptions.ProductException;
-import com.cashmanager.server.product.services.interfaces.IProductService;
+import com.cashmanager.server.product.exception.ProductException;
+import com.cashmanager.server.product.service.IProductService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
