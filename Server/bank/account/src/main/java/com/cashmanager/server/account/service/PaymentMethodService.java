@@ -11,11 +11,13 @@ import com.cashmanager.server.database.enumeration.LogSeverity;
 import com.cashmanager.server.database.mapper.TransactionMapper;
 import com.cashmanager.server.database.repository.PaymentMethodRepository;
 import com.cashmanager.server.database.repository.TransactionLogRepository;
+import com.cashmanager.server.database.repository.TransactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * Service class implementing IPaymentMethodService interface,\n
@@ -26,11 +28,13 @@ public class PaymentMethodService implements IPaymentMethodService {
 
     private final PaymentMethodRepository paymentMethodRepository;
     private final TransactionLogRepository transactionLogRepository;
+    private final TransactionRepository transactionRepository;
 
     @Autowired
-    public PaymentMethodService(PaymentMethodRepository paymentMethodRepository, TransactionLogRepository transactionLogRepository) {
+    public PaymentMethodService(PaymentMethodRepository paymentMethodRepository, TransactionLogRepository transactionLogRepository, TransactionRepository transactionRepository) {
         this.paymentMethodRepository = paymentMethodRepository;
         this.transactionLogRepository = transactionLogRepository;
+        this.transactionRepository = transactionRepository;
     }
 
     /**
@@ -42,11 +46,16 @@ public class PaymentMethodService implements IPaymentMethodService {
     @Override
     public Optional<PaymentMethod> checkPaymentMethodViability(PaymentMethodDto paymentMethodDto, TransactionDto transactionDto) {
         Optional<PaymentMethod> paymentMethod = Optional.empty();
+        transactionDto.setPaymentMethod(paymentMethodDto);
+
         if (CreditCardVerification.isACreditCard(paymentMethodDto)) {
 
             paymentMethod = paymentMethodRepository.findByCreditCardNumberAndCvc(paymentMethodDto.getCreditCardNumber(), paymentMethodDto.getCvc());
             if (paymentMethod.isEmpty()) { // Case of paymentMethod credit card isn't found
                 transactionDto.setTransactionStatus(TransactionStatus.INCORRECT_PAYMENT_INFO);
+//                setTransactionId(transactionDto);
+
+                transactionRepository.save(TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto));
                 transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none credit card payment method was found"));
                 return paymentMethod;
             }
@@ -58,6 +67,9 @@ public class PaymentMethodService implements IPaymentMethodService {
             paymentMethod = paymentMethodRepository.findByCheckNumber(paymentMethodDto.getCheckNumber());
             if (paymentMethod.isEmpty()) { // Case of paymentMethod check wasn't found
                 transactionDto.setTransactionStatus(TransactionStatus.INCORRECT_PAYMENT_INFO);
+                setTransactionId(transactionDto);
+
+                transactionRepository.save(TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto));
                 transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none check payment method was found"));
                 return paymentMethod;
             }
@@ -69,5 +81,10 @@ public class PaymentMethodService implements IPaymentMethodService {
             transactionLogRepository.save(new TransactionLog(null, TransactionMapper.INSTANCE.transactionDtoToTransaction(transactionDto), LocalDateTime.now(), LogSeverity.ERROR, "none payment method was found"));
         }
         return paymentMethod;
+    }
+
+    private void setTransactionId(TransactionDto transactionDto) {
+        transactionDto.setId(UUID.randomUUID());
+//        transactionDto.setDate(LocalDateTime.now();
     }
 }
