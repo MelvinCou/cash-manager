@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class OrderService implements IOrderService {
@@ -90,5 +91,16 @@ public class OrderService implements IOrderService {
              return Optional.of(OrderMapper.INSTANCE.orderToOrderDto(finalOrder));
          }
         return Optional.empty();
+    }
+
+    @Override
+    public boolean updateOrderStatus(UUID orderId, OrderStatus status) {
+        Optional<Order> optOrder = orderRepository.findById(orderId);
+        if(optOrder.isPresent()){
+            optOrder.get().setStatus(status.toString());
+            orderRepository.save(optOrder.get());
+            return true;
+        }
+        return false;
     }
 }
